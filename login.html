@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyARTIVION Login - Sicher anmelden">
+    <meta name="theme-color" content="#00558C">
+    <title>Login - MyARTIVION</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #00558C 0%, #003d66 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 440px;
+            padding: 48px 40px;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .logo-section img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+        }
+
+        .logo-section h1 {
+            color: #00558C;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .logo-section p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-methods {
+            margin-top: 32px;
+        }
+
+        .method-divider {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .method-divider::before,
+        .method-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .method-divider span {
+            padding: 0 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .btn-microsoft {
+            background: #2F2F2F;
+            color: white;
+        }
+
+        .btn-microsoft:hover {
+            background: #1F1F1F;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(47, 47, 47, 0.3);
+        }
+
+        .btn-magic-link {
+            background: #00558C;
+            color: white;
+        }
+
+        .btn-magic-link:hover {
+            background: #004270;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 85, 140, 0.3);
+        }
+
+        .btn-icon {
+            font-size: 20px;
+        }
+
+        .security-note {
+            margin-top: 32px;
+            padding: 16px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .security-note p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .security-note .icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .demo-badge {
+            display: inline-block;
+            background: #FFA500;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        /* Microsoft Login Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .microsoft-modal {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 440px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .microsoft-header {
+            padding: 24px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .microsoft-logo {
+            width: 24px;
+            height: 24px;
+        }
+
+        .microsoft-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .microsoft-body {
+            padding: 32px 24px;
+        }
+
+        .microsoft-body h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1F1F1F;
+            margin-bottom: 8px;
+        }
+
+        .microsoft-body p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #00558C;
+            box-shadow: 0 0 0 2px rgba(0, 85, 140, 0.1);
+        }
+
+        .btn-next {
+            width: 100%;
+            padding: 12px;
+            background: #00558C;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-next:hover {
+            background: #004270;
+        }
+
+        .loading-state {
+            display: none;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .loading-state.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00558C;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-state p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Magic Link Form */
+        .magic-link-form {
+            display: none;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .magic-link-form.active {
+            display: block;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-header h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .btn-back {
+            background: #f5f5f5;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .btn-back:hover {
+            background: #e0e0e0;
+        }
+
+        .footer-links {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .footer-links a {
+            color: #00558C;
+            text-decoration: none;
+            font-size: 13px;
+            margin: 0 8px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <div style="font-size: 64px; margin-bottom: 8px;">🏥</div>
+            <h1>MyARTIVION</h1>
+            <p>Mitarbeiter-Portal</p>
+            <div class="demo-badge">DEMO MODE</div>
+        </div>
+
+        <!-- Main Login Methods -->
+        <div class="login-methods" id="loginMethods">
+            <button class="btn btn-microsoft" id="btnMicrosoft">
+                <span class="btn-icon">🏢</span>
+                <span>Mit Microsoft anmelden</span>
+            </button>
+
+            <div class="method-divider">
+                <span>oder</span>
+            </div>
+
+            <button class="btn btn-magic-link" id="btnMagicLink">
+                <span class="btn-icon">✉️</span>
+                <span>Magic Link per E-Mail</span>
+            </button>
+        </div>
+
+        <!-- Magic Link Form -->
+        <div class="magic-link-form" id="magicLinkForm">
+            <div class="form-header">
+                <h2>Magic Link anfordern</h2>
+                <p>Wir senden dir einen sicheren Login-Link per E-Mail</p>
+            </div>
+
+            <form id="magicLinkEmailForm">
+                <div class="input-group">
+                    <label for="emailInput">E-Mail-Adresse</label>
+                    <input
+                        type="email"
+                        id="emailInput"
+                        placeholder="deine.email@artivion.com"
+                        required
+                    />
+                </div>
+
+                <button type="submit" class="btn btn-magic-link">
+                    <span>Magic Link senden</span>
+                </button>
+
+                <button type="button" class="btn btn-back" id="btnBackToLogin">
+                    <span>Zurück</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="security-note">
+            <span class="icon">🔒</span>
+            <p><strong>Sicherer Login</strong><br>
+            Deine Daten werden verschlüsselt übertragen und sicher gespeichert.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">Hilfe</a>
+            <a href="#">Datenschutz</a>
+            <a href="#">Impressum</a>
+        </div>
+    </div>
+
+    <!-- Microsoft Login Modal -->
+    <div class="modal-overlay" id="microsoftModal">
+        <div class="microsoft-modal">
+            <div class="microsoft-header">
+                <div class="microsoft-logo">
+                    <svg viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="11" height="11" fill="#F25022"/>
+                        <rect y="12" width="11" height="11" fill="#00A4EF"/>
+                        <rect x="12" width="11" height="11" fill="#7FBA00"/>
+                        <rect x="12" y="12" width="11" height="11" fill="#FFB900"/>
+                    </svg>
+                </div>
+                <h2>Microsoft</h2>
+            </div>
+
+            <div class="microsoft-body" id="microsoftLoginStep">
+                <h3>Anmelden</h3>
+                <p>mit deinem Microsoft-Konto</p>
+
+                <form id="microsoftEmailForm">
+                    <div class="input-group">
+                        <label>E-Mail oder Telefon</label>
+                        <input
+                            type="email"
+                            id="microsoftEmail"
+                            placeholder="name@artivion.com"
+                            required
+                        />
+                    </div>
+
+                    <button type="submit" class="btn-next">Weiter</button>
+                </form>
+            </div>
+
+            <div class="microsoft-body" id="microsoftPasswordStep" style="display: none;">
+                <h3>Kennwort eingeben</h3>
+                <p id="displayEmail"></p>
+
+                <form id="microsoftPasswordForm">
+                    <div class="input-group">
+                        <label>Kennwort</label>
+                        <input
+                            type="password"
+                            id="microsoftPassword"
+                            placeholder="Kennwort"
+                            required
+                        />
+                    </div>
+
+                    <button type="submit" class="btn-next">Anmelden</button>
+                </form>
+            </div>
+
+            <div class="loading-state" id="microsoftLoading">
+                <div class="spinner"></div>
+                <p>Sie werden angemeldet...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        // DOM Elements
+        const loginMethods = document.getElementById('loginMethods');
+        const magicLinkForm = document.getElementById('magicLinkForm');
+        const btnMicrosoft = document.getElementById('btnMicrosoft');
+        const btnMagicLink = document.getElementById('btnMagicLink');
+        const btnBackToLogin = document.getElementById('btnBackToLogin');
+        const microsoftModal = document.getElementById('microsoftModal');
+        const microsoftLoginStep = document.getElementById('microsoftLoginStep');
+        const microsoftPasswordStep = document.getElementById('microsoftPasswordStep');
+        const microsoftLoading = document.getElementById('microsoftLoading');
+        const magicLinkEmailForm = document.getElementById('magicLinkEmailForm');
+        const microsoftEmailForm = document.getElementById('microsoftEmailForm');
+        const microsoftPasswordForm = document.getElementById('microsoftPasswordForm');
+
+        let currentEmail = '';
+
+        // Show Magic Link Form
+        btnMagicLink.addEventListener('click', () => {
+            loginMethods.style.display = 'none';
+            magicLinkForm.classList.add('active');
+        });
+
+        // Back to Login Methods
+        btnBackToLogin.addEventListener('click', () => {
+            magicLinkForm.classList.remove('active');
+            loginMethods.style.display = 'block';
+        });
+
+        // Show Microsoft Modal
+        btnMicrosoft.addEventListener('click', () => {
+            microsoftModal.classList.add('active');
+        });
+
+        // Close Microsoft Modal on outside click
+        microsoftModal.addEventListener('click', (e) => {
+            if (e.target === microsoftModal) {
+                microsoftModal.classList.remove('active');
+                resetMicrosoftModal();
+            }
+        });
+
+        // Microsoft Email Form Submit
+        microsoftEmailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            currentEmail = document.getElementById('microsoftEmail').value;
+
+            // Show password step
+            microsoftLoginStep.style.display = 'none';
+            microsoftPasswordStep.style.display = 'block';
+            document.getElementById('displayEmail').textContent = currentEmail;
+        });
+
+        // Microsoft Password Form Submit
+        microsoftPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Show loading state
+            microsoftPasswordStep.style.display = 'none';
+            microsoftLoading.classList.add('active');
+
+            // Simulate authentication
+            setTimeout(() => {
+                // Store user info in localStorage
+                Auth.login({
+                    email: currentEmail,
+                    method: 'microsoft',
+                    name: currentEmail.split('@')[0]
+                });
+
+                // Redirect to app
+                window.location.href = '/index.html';
+            }, 2000);
+        });
+
+        // Magic Link Form Submit
+        magicLinkEmailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+
+            // Store email for magic link page
+            sessionStorage.setItem('magicLinkEmail', email);
+
+            // Redirect to magic link page
+            window.location.href = '/magic-link.html';
+        });
+
+        function resetMicrosoftModal() {
+            microsoftLoginStep.style.display = 'block';
+            microsoftPasswordStep.style.display = 'none';
+            microsoftLoading.classList.remove('active');
+            microsoftEmailForm.reset();
+            microsoftPasswordForm.reset();
+        }
+
+        // Check if already logged in
+        if (Auth.isAuthenticated()) {
+            window.location.href = '/index.html';
+        }
+    </script>
+</body>
+</html>
