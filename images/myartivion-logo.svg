@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 350" width="850" height="350">
+  <defs>
+    <linearGradient id="gradient1" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#7AC143;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00A3AD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Centered layered triangle pattern - matching your logo -->
+  <g transform="translate(230, 175)">
+    <!-- Outermost layers - very light -->
+    <polygon points="0,-140 145,105 -145,105" fill="#7AC143" opacity="0.12"/>
+    <polygon points="0,-125 130,95 -130,95" fill="#6CB844" opacity="0.18"/>
+    <polygon points="0,-110 115,82 -115,82" fill="#5FB045" opacity="0.25"/>
+    <polygon points="0,-95 100,70 -100,70" fill="#52A846" opacity="0.32"/>
+    <polygon points="0,-80 85,60 -85,60" fill="#45A047" opacity="0.42"/>
+    <polygon points="0,-65 70,48 -70,48" fill="#389848" opacity="0.55"/>
+    <polygon points="0,-50 55,38 -55,38" fill="#2B9049" opacity="0.68"/>
+    <polygon points="0,-35 40,25 -40,25" fill="#1E884A" opacity="0.82"/>
+    <!-- Inner core - solid gradient -->
+    <polygon points="0,-20 25,12 -25,12" fill="url(#gradient1)" opacity="1"/>
+  </g>
+
+  <!-- MyARTIVION text with proper styling -->
+  <g transform="translate(460, 210)">
+    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="400" fill="#00558C" letter-spacing="-2">
+      <tspan font-weight="300">My</tspan><tspan font-weight="700">ARTIVION</tspan>
+    </text>
+  </g>
+</svg>
