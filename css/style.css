@@ -6,19 +6,23 @@
 }
 
 :root {
-    --primary-color: #0066CC;
-    --secondary-color: #0052A3;
-    --accent-color: #00A8E8;
-    --success-color: #28A745;
+    /* Artivion Brand Colors */
+    --primary-color: #00558C;
+    --primary-blue: #00558C;
+    --accent-green: #7AC143;
+    --accent-teal: #00A3AD;
+    --secondary-color: #004670;
+    --accent-color: #00A3AD;
+    --success-color: #7AC143;
     --warning-color: #FFC107;
     --danger-color: #DC3545;
-    --text-color: #333;
-    --text-light: #666;
-    --light-gray: #f5f5f5;
-    --border-color: #ddd;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
-    --max-width: 1200px;
+    --text-color: #1A1A1A;
+    --text-light: #666666;
+    --light-gray: #F7F7F7;
+    --border-color: #E5E5E5;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --max-width: 1400px;
 }
 
 body {
@@ -41,23 +45,47 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 2rem 1.5rem;
-    text-align: center;
+    background: white;
+    color: var(--primary-color);
+    padding: 1.5rem 2rem;
     box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-container img {
+    height: 50px;
+    width: auto;
 }
 
 .header-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: var(--primary-color);
 }
 
 .subtitle {
-    font-size: 1.1rem;
-    opacity: 0.95;
-    font-weight: 300;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 400;
+    margin: 0;
 }
 
 /* Navigation */
@@ -71,9 +99,7 @@ header {
     max-width: var(--max-width);
     margin: 0 auto;
     width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-btn {
@@ -889,12 +915,20 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .logo-container img {
+        height: 40px;
+    }
+
     .header-content h1 {
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .main-nav {
