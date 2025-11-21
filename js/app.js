@@ -72,6 +72,10 @@ function initializeNavigation() {
     // Close mobile sidebar on navigation
     if (window.innerWidth <= 1024 && sidebar) {
       sidebar.classList.remove('mobile-open');
+      const overlay = document.getElementById('sidebarOverlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+      }
     }
 
     // Scroll to top
@@ -118,15 +122,28 @@ function initializeNavigation() {
   }
 
   // Mobile sidebar toggle
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
   if (mobileSidebarToggle) {
     mobileSidebarToggle.addEventListener('click', () => {
       sidebar.classList.toggle('mobile-open');
+      if (sidebarOverlay) {
+        sidebarOverlay.classList.toggle('active');
+      }
     });
 
     // Show mobile menu toggle on mobile
     if (window.innerWidth <= 1024) {
       mobileSidebarToggle.style.display = 'flex';
     }
+  }
+
+  // Close sidebar when clicking overlay
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('mobile-open');
+      sidebarOverlay.classList.remove('active');
+    });
   }
 
   // Handle window resize
@@ -139,6 +156,9 @@ function initializeNavigation() {
       }
     } else {
       sidebar.classList.remove('mobile-open');
+      if (sidebarOverlay) {
+        sidebarOverlay.classList.remove('active');
+      }
       if (mobileSidebarToggle) {
         mobileSidebarToggle.style.display = 'none';
       }
@@ -151,14 +171,8 @@ function initializeNavigation() {
     }
   });
 
-  // Close mobile sidebar when clicking outside
-  document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 1024 && sidebar) {
-      if (!sidebar.contains(e.target) && !mobileSidebarToggle.contains(e.target)) {
-        sidebar.classList.remove('mobile-open');
-      }
-    }
-  });
+  // Close mobile sidebar when clicking outside (handled by overlay now)
+  // Removed to avoid conflicts with overlay click handler
 
   // Restore last viewed section on load
   const savedSection = localStorage.getItem('currentSection');
