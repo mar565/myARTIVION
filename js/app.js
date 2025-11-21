@@ -12,41 +12,168 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initializeNavigation() {
-  const navButtons = document.querySelectorAll('.nav-btn');
+  // Get all navigation elements
+  const sidebarItems = document.querySelectorAll('.sidebar .nav-item');
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+  const oldNavButtons = document.querySelectorAll('.nav-btn');
   const sections = document.querySelectorAll('.content-section');
+  const pageTitle = document.getElementById('pageTitle');
+  const sidebar = document.getElementById('sidebar');
+  const container = document.querySelector('.container');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const mobileSidebarToggle = document.getElementById('mobileSidebarToggle');
 
-  // Add click handlers to navigation buttons
-  navButtons.forEach(button => {
+  // Section titles mapping
+  const sectionTitles = {
+    home: 'Willkommen',
+    benefits: 'Deine Benefits',
+    news: 'News & Events',
+    salary: 'Gehaltsübersicht',
+    time: 'Zeiterfassung',
+    vacation: 'Urlaubsplaner',
+    social: 'Social Hub',
+    onboarding: 'Training',
+    tasks: 'Aufgaben',
+    analytics: 'Analytics',
+    wellbeing: 'Wohlbefinden'
+  };
+
+  // Handle navigation click
+  function handleNavigation(targetSection) {
+    // Update active states for sidebar
+    sidebarItems.forEach(item => item.classList.remove('active'));
+    const activeSidebarItem = document.querySelector(`.sidebar .nav-item[data-section="${targetSection}"]`);
+    if (activeSidebarItem) activeSidebarItem.classList.add('active');
+
+    // Update active states for mobile nav
+    mobileNavItems.forEach(item => item.classList.remove('active'));
+    const activeMobileItem = document.querySelector(`.mobile-nav-item[data-section="${targetSection}"]`);
+    if (activeMobileItem) activeMobileItem.classList.add('active');
+
+    // Update active states for old nav (if exists)
+    oldNavButtons.forEach(btn => btn.classList.remove('active'));
+    const activeOldButton = document.querySelector(`.nav-btn[data-section="${targetSection}"]`);
+    if (activeOldButton) activeOldButton.classList.add('active');
+
+    // Show target section, hide others
+    sections.forEach(section => {
+      if (section.id === targetSection) {
+        section.classList.add('active');
+      } else {
+        section.classList.remove('active');
+      }
+    });
+
+    // Update page title
+    if (pageTitle && sectionTitles[targetSection]) {
+      pageTitle.textContent = sectionTitles[targetSection];
+    }
+
+    // Close mobile sidebar on navigation
+    if (window.innerWidth <= 1024 && sidebar) {
+      sidebar.classList.remove('mobile-open');
+    }
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Save current section to localStorage
+    localStorage.setItem('currentSection', targetSection);
+  }
+
+  // Add click handlers to sidebar items
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetSection = item.getAttribute('data-section');
+      handleNavigation(targetSection);
+    });
+  });
+
+  // Add click handlers to mobile nav items
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetSection = item.getAttribute('data-section');
+      handleNavigation(targetSection);
+    });
+  });
+
+  // Add click handlers to old nav buttons (for compatibility)
+  oldNavButtons.forEach(button => {
     button.addEventListener('click', () => {
       const targetSection = button.getAttribute('data-section');
-
-      // Update active states
-      navButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      // Show target section, hide others
-      sections.forEach(section => {
-        if (section.id === targetSection) {
-          section.classList.add('active');
-        } else {
-          section.classList.remove('active');
-        }
-      });
-
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // Save current section to localStorage
-      localStorage.setItem('currentSection', targetSection);
+      handleNavigation(targetSection);
     });
+  });
+
+  // Sidebar toggle functionality
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (window.innerWidth > 1024) {
+        sidebar.classList.toggle('collapsed');
+        container.classList.toggle('sidebar-collapsed');
+        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+      }
+    });
+  }
+
+  // Mobile sidebar toggle
+  if (mobileSidebarToggle) {
+    mobileSidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile-open');
+    });
+
+    // Show mobile menu toggle on mobile
+    if (window.innerWidth <= 1024) {
+      mobileSidebarToggle.style.display = 'flex';
+    }
+  }
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 1024) {
+      sidebar.classList.remove('collapsed');
+      container.classList.remove('sidebar-collapsed');
+      if (mobileSidebarToggle) {
+        mobileSidebarToggle.style.display = 'flex';
+      }
+    } else {
+      sidebar.classList.remove('mobile-open');
+      if (mobileSidebarToggle) {
+        mobileSidebarToggle.style.display = 'none';
+      }
+      // Restore saved sidebar state
+      const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+      if (sidebarCollapsed) {
+        sidebar.classList.add('collapsed');
+        container.classList.add('sidebar-collapsed');
+      }
+    }
+  });
+
+  // Close mobile sidebar when clicking outside
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 && sidebar) {
+      if (!sidebar.contains(e.target) && !mobileSidebarToggle.contains(e.target)) {
+        sidebar.classList.remove('mobile-open');
+      }
+    }
   });
 
   // Restore last viewed section on load
   const savedSection = localStorage.getItem('currentSection');
   if (savedSection) {
-    const targetButton = document.querySelector(`[data-section="${savedSection}"]`);
-    if (targetButton) {
-      targetButton.click();
+    handleNavigation(savedSection);
+  } else {
+    handleNavigation('home');
+  }
+
+  // Restore saved sidebar state on desktop
+  if (window.innerWidth > 1024) {
+    const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+    if (sidebarCollapsed && sidebar && container) {
+      sidebar.classList.add('collapsed');
+      container.classList.add('sidebar-collapsed');
     }
   }
 }
