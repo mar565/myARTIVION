@@ -1,11 +1,11 @@
 {
-  "name": "My Progressive Web App",
-  "short_name": "My PWA",
-  "description": "A Progressive Web App optimized for mobile and desktop",
+  "name": "Artivion Mitarbeiter-App",
+  "short_name": "Artivion",
+  "description": "Deine zentrale Plattform für Benefits, News, Gehalt, Urlaub und mehr",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2196F3",
+  "theme_color": "#0066CC",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -57,7 +57,29 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["productivity"],
+  "categories": ["productivity", "business"],
   "screenshots": [],
-  "shortcuts": []
+  "shortcuts": [
+    {
+      "name": "Benefits",
+      "short_name": "Benefits",
+      "description": "Zeige meine Benefits",
+      "url": "/?section=benefits",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Urlaub",
+      "short_name": "Urlaub",
+      "description": "Urlaubsplaner",
+      "url": "/?section=vacation",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Social Hub",
+      "short_name": "Events",
+      "description": "After-Work Events",
+      "url": "/?section=social",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+    }
+  ]
 }

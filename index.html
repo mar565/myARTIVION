@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Progressive Web App optimized for mobile and desktop">
-    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="Artivion Mitarbeiter-App - Deine zentrale Plattform für Benefits, News und mehr">
+    <meta name="theme-color" content="#0066CC">
 
     <!-- PWA Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="My PWA">
+    <meta name="apple-mobile-web-app-title" content="Artivion">
 
-    <title>My Progressive Web App</title>
+    <title>Artivion - Mitarbeiter-App</title>
 
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -27,50 +27,546 @@
 <body>
     <div class="container">
         <header>
-            <h1>Welcome to My PWA</h1>
-            <p class="subtitle">Optimized for mobile and desktop</p>
+            <div class="header-content">
+                <h1>Artivion</h1>
+                <p class="subtitle">Mit Herz und Code – Gestalte die Artivion App der Zukunft</p>
+            </div>
         </header>
 
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="home">Home</button>
+            <button class="nav-btn" data-section="benefits">Benefits</button>
+            <button class="nav-btn" data-section="news">News</button>
+            <button class="nav-btn" data-section="salary">Gehalt</button>
+            <button class="nav-btn" data-section="time">Zeiterfassung</button>
+            <button class="nav-btn" data-section="vacation">Urlaub</button>
+            <button class="nav-btn" data-section="social">Social Hub</button>
+        </nav>
+
         <main>
-            <section class="content">
-                <h2>Getting Started</h2>
-                <p>This is a Progressive Web App template ready for customization.</p>
+            <!-- Home Section -->
+            <section class="content-section active" id="home">
+                <div class="content">
+                    <h2>Willkommen bei Artivion</h2>
+                    <p>Unsere Mitarbeitenden sind das Herz unseres Unternehmens. Doch im Arbeitsalltag gehen viele wertvolle Informationen unter: unsere Benefits wie BusinessBike, Corporate Benefits, WellPass oder PKW-Leasing sind oft schwer auffindbar, und auch HR- oder Management-News werden bisher über viele verschiedene Kanäle verteilt.</p>
+                    <p>Gleichzeitig wünschen sich Mitarbeitende mehr Transparenz über ihre persönliche Gesamtvergütung („Total Rewards") und eine moderne, zentrale Plattform, die alles Wichtige an einem Ort bündelt.</p>
+                    <p><strong>Diese innovative App motiviert, informiert und verbindet – und macht unser Arbeitgeberversprechen digital erlebbar.</strong></p>
 
-                <div class="features">
-                    <div class="feature-card">
-                        <h3>📱 Mobile Optimized</h3>
-                        <p>Responsive design that works on all devices</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <h3>💻 Desktop Ready</h3>
-                        <p>Fully functional on desktop browsers</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <h3>📲 Installable</h3>
-                        <p>Can be installed as a native app</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <h3>⚡ Fast & Offline</h3>
-                        <p>Works offline with service worker caching</p>
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">8.450€</div>
+                            <div class="stat-label">Genutzte Benefits (Jahreswert)</div>
+                        </div>
+                        <div class="stat-card highlight">
+                            <div class="stat-value">4.200€</div>
+                            <div class="stat-label">Ungenutzte Benefits (Potenzial)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">12.650€</div>
+                            <div class="stat-label">Gesamt-Benefits-Wert</div>
+                        </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Benefits Section -->
+            <section class="content-section" id="benefits">
+                <div class="content">
+                    <h2>Deine Benefits Übersicht</h2>
+                    <p>Entdecke den wahren Wert deiner Gesamtvergütung bei Artivion</p>
+
+                    <div class="benefits-summary">
+                        <div class="benefit-total used">
+                            <h3>Genutzte Benefits</h3>
+                            <div class="total-amount">8.450€</div>
+                            <div class="total-label">pro Jahr</div>
+                        </div>
+                        <div class="benefit-total unused">
+                            <h3>Ungenutztes Potenzial</h3>
+                            <div class="total-amount">4.200€</div>
+                            <div class="total-label">verpasse nicht!</div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Aktiv genutzte Benefits</h3>
+                    <div class="benefits-list">
+                        <div class="benefit-card active">
+                            <div class="benefit-icon">🚴</div>
+                            <div class="benefit-info">
+                                <h4>Business Bike</h4>
+                                <p>Dein E-Bike über Gehaltsumwandlung</p>
+                            </div>
+                            <div class="benefit-value">1.200€/Jahr</div>
+                        </div>
+
+                        <div class="benefit-card active">
+                            <div class="benefit-icon">💪</div>
+                            <div class="benefit-info">
+                                <h4>Firmenfitness Wellpass</h4>
+                                <p>Zugang zu über 6.000 Fitness-Studios</p>
+                            </div>
+                            <div class="benefit-value">480€/Jahr</div>
+                        </div>
+
+                        <div class="benefit-card active">
+                            <div class="benefit-icon">🍽️</div>
+                            <div class="benefit-info">
+                                <h4>Kantine & Getränke</h4>
+                                <p>Kostenlose Getränke + 2,50€ Essenszuschuss täglich</p>
+                            </div>
+                            <div class="benefit-value">650€/Jahr</div>
+                        </div>
+
+                        <div class="benefit-card active">
+                            <div class="benefit-icon">📈</div>
+                            <div class="benefit-info">
+                                <h4>Mitarbeiteraktienplan (ESPP)</h4>
+                                <p>Vergünstigter Kauf von Unternehmensaktien</p>
+                            </div>
+                            <div class="benefit-value">2.400€/Jahr</div>
+                        </div>
+
+                        <div class="benefit-card active">
+                            <div class="benefit-icon">🏖️</div>
+                            <div class="benefit-info">
+                                <h4>30 Tage Urlaub</h4>
+                                <p>Vollzeit-Urlaubsanspruch</p>
+                            </div>
+                            <div class="benefit-value">3.720€/Jahr</div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title unused-title">Noch nicht genutzte Benefits</h3>
+                    <div class="benefits-list">
+                        <div class="benefit-card inactive">
+                            <div class="benefit-icon">🚗</div>
+                            <div class="benefit-info">
+                                <h4>Motivationsleasing PKW</h4>
+                                <p>Fahrzeug-Leasing mit attraktiven Konditionen</p>
+                            </div>
+                            <div class="benefit-value">2.800€/Jahr</div>
+                            <button class="btn-activate">Aktivieren</button>
+                        </div>
+
+                        <div class="benefit-card inactive">
+                            <div class="benefit-icon">🛍️</div>
+                            <div class="benefit-info">
+                                <h4>Corporate Benefits</h4>
+                                <p>Rabatte bei über 800 Marken</p>
+                            </div>
+                            <div class="benefit-value">600€/Jahr</div>
+                            <button class="btn-activate">Aktivieren</button>
+                        </div>
+
+                        <div class="benefit-card inactive">
+                            <div class="benefit-icon">👶</div>
+                            <div class="benefit-info">
+                                <h4>Sommerbetreuung für Kinder</h4>
+                                <p>Ferienbetreuung in den Sommermonaten</p>
+                            </div>
+                            <div class="benefit-value">800€/Jahr</div>
+                            <button class="btn-activate">Mehr erfahren</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News Feed Section -->
+            <section class="content-section" id="news">
+                <div class="content">
+                    <h2>News & Events</h2>
+                    <p>Bleib auf dem Laufenden mit den neuesten Nachrichten und Veranstaltungen</p>
+
+                    <div class="news-feed">
+                        <article class="news-card featured">
+                            <div class="news-header">
+                                <span class="news-badge">Wichtig</span>
+                                <span class="news-date">18. Dezember 2025</span>
+                            </div>
+                            <div class="news-image">🎄</div>
+                            <h3>Weihnachtsfeier 2025 - Save the Date!</h3>
+                            <p>Liebe Kolleginnen und Kollegen, wir laden herzlich zu unserer diesjährigen Weihnachtsfeier ein!</p>
+                            <div class="news-details">
+                                <p><strong>📅 Datum:</strong> Freitag, 20. Dezember 2025</p>
+                                <p><strong>🕕 Uhrzeit:</strong> 18:00 Uhr</p>
+                                <p><strong>📍 Ort:</strong> Eventhalle Jägermeister, Heidenheim</p>
+                                <p><strong>🎉 Programm:</strong> Gemeinsames Dinner, Live-Musik, Tombola mit tollen Preisen</p>
+                            </div>
+                            <button class="btn-primary">Jetzt anmelden</button>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-header">
+                                <span class="news-badge event">Event</span>
+                                <span class="news-date">15. Dezember 2025</span>
+                            </div>
+                            <div class="news-image">🏃</div>
+                            <h3>Neuer Wellpass-Standort in Heidenheim</h3>
+                            <p>Ab Januar 2026 könnt ihr zusätzlich das neu eröffnete "FitActive Premium" in der Innenstadt nutzen. Modernste Geräte und Kurse warten auf euch!</p>
+                            <button class="btn-secondary">Mehr erfahren</button>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-header">
+                                <span class="news-badge hr">HR-News</span>
+                                <span class="news-date">10. Dezember 2025</span>
+                            </div>
+                            <div class="news-image">📊</div>
+                            <h3>Mitarbeitergespräche Q1 2026</h3>
+                            <p>Die Jahresgespräche für 2026 finden im Januar und Februar statt. Bitte vereinbart frühzeitig Termine mit euren Vorgesetzten. Vorbereitungsunterlagen findet ihr im HR-Portal.</p>
+                            <button class="btn-secondary">Zum Portal</button>
+                        </article>
+
+                        <article class="news-card">
+                            <div class="news-header">
+                                <span class="news-badge event">After Work</span>
+                                <span class="news-date">5. Dezember 2025</span>
+                            </div>
+                            <div class="news-image">🍺</div>
+                            <h3>After Work Stammtisch - Januar Termine</h3>
+                            <p>Unser monatlicher After Work Stammtisch geht weiter! Im Januar treffen wir uns jeden ersten und dritten Donnerstag ab 18:00 Uhr im "Brauhaus am Markt".</p>
+                            <button class="btn-secondary">Zusagen</button>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Salary Section -->
+            <section class="content-section" id="salary">
+                <div class="content">
+                    <h2>Gehaltsübersicht</h2>
+                    <p>Deine Vergütung transparent dargestellt</p>
+
+                    <div class="salary-summary">
+                        <div class="salary-card primary">
+                            <h3>Brutto-Jahresgehalt</h3>
+                            <div class="salary-amount">52.000€</div>
+                        </div>
+                        <div class="salary-card">
+                            <h3>Benefits-Wert (genutzt)</h3>
+                            <div class="salary-amount">8.450€</div>
+                        </div>
+                        <div class="salary-card highlight">
+                            <h3>Total Rewards</h3>
+                            <div class="salary-amount">60.450€</div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Monatliche Abrechnung (Dezember 2025)</h3>
+                    <div class="salary-details">
+                        <div class="salary-row">
+                            <span>Grundgehalt</span>
+                            <span>4.333,33€</span>
+                        </div>
+                        <div class="salary-row">
+                            <span>Weihnachtsgeld (anteilig)</span>
+                            <span>+500,00€</span>
+                        </div>
+                        <div class="salary-row total">
+                            <span><strong>Brutto gesamt</strong></span>
+                            <span><strong>4.833,33€</strong></span>
+                        </div>
+                        <div class="salary-row deduction">
+                            <span>Lohnsteuer</span>
+                            <span>-890,00€</span>
+                        </div>
+                        <div class="salary-row deduction">
+                            <span>Sozialversicherung</span>
+                            <span>-968,67€</span>
+                        </div>
+                        <div class="salary-row net">
+                            <span><strong>Netto-Auszahlung</strong></span>
+                            <span><strong>2.974,66€</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="salary-documents">
+                        <h3 class="section-title">Gehaltsabrechnungen</h3>
+                        <div class="document-list">
+                            <div class="document-item">
+                                <span>📄 Dezember 2025</span>
+                                <button class="btn-secondary">Download</button>
+                            </div>
+                            <div class="document-item">
+                                <span>📄 November 2025</span>
+                                <button class="btn-secondary">Download</button>
+                            </div>
+                            <div class="document-item">
+                                <span>📄 Oktober 2025</span>
+                                <button class="btn-secondary">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Time Management Section -->
+            <section class="content-section" id="time">
+                <div class="content">
+                    <h2>Zeiterfassung</h2>
+                    <p>Deine Arbeitszeiten im Überblick</p>
+
+                    <div class="time-summary">
+                        <div class="time-card">
+                            <div class="time-label">Heute</div>
+                            <div class="time-value">7:45 Std</div>
+                            <div class="time-status">In Arbeit</div>
+                        </div>
+                        <div class="time-card">
+                            <div class="time-label">Diese Woche</div>
+                            <div class="time-value">32:15 Std</div>
+                            <div class="time-status">von 40:00 Std</div>
+                        </div>
+                        <div class="time-card">
+                            <div class="time-label">Dieser Monat</div>
+                            <div class="time-value">156:30 Std</div>
+                            <div class="time-status">Target: 160:00 Std</div>
+                        </div>
+                        <div class="time-card">
+                            <div class="time-label">Überstunden</div>
+                            <div class="time-value">+12:30 Std</div>
+                            <div class="time-status">Akkumuliert</div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Aktuelle Woche (KW 51)</h3>
+                    <div class="time-tracking">
+                        <div class="time-entry">
+                            <div class="day">Mo, 16.12.</div>
+                            <div class="hours">8:00 Std</div>
+                            <div class="times">08:00 - 17:00</div>
+                        </div>
+                        <div class="time-entry">
+                            <div class="day">Di, 17.12.</div>
+                            <div class="hours">8:15 Std</div>
+                            <div class="times">07:45 - 17:00</div>
+                        </div>
+                        <div class="time-entry">
+                            <div class="day">Mi, 18.12.</div>
+                            <div class="hours">8:00 Std</div>
+                            <div class="times">08:00 - 17:00</div>
+                        </div>
+                        <div class="time-entry">
+                            <div class="day">Do, 19.12.</div>
+                            <div class="hours">8:00 Std</div>
+                            <div class="times">08:00 - 17:00</div>
+                        </div>
+                        <div class="time-entry current">
+                            <div class="day">Fr, 20.12.</div>
+                            <div class="hours">7:45 Std</div>
+                            <div class="times">08:15 - laufend</div>
+                        </div>
+                    </div>
+
+                    <div class="time-actions">
+                        <button class="btn-primary">Stempeln</button>
+                        <button class="btn-secondary">Korrektur beantragen</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vacation Planner Section -->
+            <section class="content-section" id="vacation">
+                <div class="content">
+                    <h2>Urlaubsplaner</h2>
+                    <p>Plane und verwalte deinen Urlaub</p>
+
+                    <div class="vacation-summary">
+                        <div class="vacation-card">
+                            <div class="vacation-icon">🏖️</div>
+                            <div class="vacation-info">
+                                <div class="vacation-value">18 Tage</div>
+                                <div class="vacation-label">Verfügbar</div>
+                            </div>
+                        </div>
+                        <div class="vacation-card">
+                            <div class="vacation-icon">✅</div>
+                            <div class="vacation-info">
+                                <div class="vacation-value">8 Tage</div>
+                                <div class="vacation-label">Genommen</div>
+                            </div>
+                        </div>
+                        <div class="vacation-card">
+                            <div class="vacation-icon">📅</div>
+                            <div class="vacation-info">
+                                <div class="vacation-value">4 Tage</div>
+                                <div class="vacation-label">Geplant</div>
+                            </div>
+                        </div>
+                        <div class="vacation-card total">
+                            <div class="vacation-icon">📊</div>
+                            <div class="vacation-info">
+                                <div class="vacation-value">30 Tage</div>
+                                <div class="vacation-label">Jahresanspruch</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Geplante Abwesenheiten</h3>
+                    <div class="vacation-list">
+                        <div class="vacation-entry approved">
+                            <div class="vacation-dates">
+                                <div class="date-badge">27.12.25 - 31.12.25</div>
+                                <div class="vacation-days">5 Tage</div>
+                            </div>
+                            <div class="vacation-status">
+                                <span class="status-badge approved">Genehmigt</span>
+                            </div>
+                        </div>
+
+                        <div class="vacation-entry pending">
+                            <div class="vacation-dates">
+                                <div class="date-badge">14.02.26 - 16.02.26</div>
+                                <div class="vacation-days">3 Tage (Brückentage)</div>
+                            </div>
+                            <div class="vacation-status">
+                                <span class="status-badge pending">Ausstehend</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vacation-calendar">
+                        <h3 class="section-title">Beliebte Brückentage 2026</h3>
+                        <div class="bridge-days">
+                            <div class="bridge-day">
+                                <span>🌉 Karneval: 16.02. (Mo) + 17.02. (Di)</span>
+                                <button class="btn-secondary">Planen</button>
+                            </div>
+                            <div class="bridge-day">
+                                <span>🌉 Ostern: 14.04. (Di) + 15.04. (Mi)</span>
+                                <button class="btn-secondary">Planen</button>
+                            </div>
+                            <div class="bridge-day">
+                                <span>🌉 Himmelfahrt: 15.05. (Fr)</span>
+                                <button class="btn-secondary">Planen</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary">Neuen Urlaub beantragen</button>
+                </div>
+            </section>
+
+            <!-- Social Hub Section -->
+            <section class="content-section" id="social">
+                <div class="content">
+                    <h2>Social Hub</h2>
+                    <p>Vernetze dich mit Kollegen und entdecke After-Work Events</p>
+
+                    <div class="social-featured">
+                        <div class="event-card featured">
+                            <div class="event-badge">Nächstes Event</div>
+                            <div class="event-image">🎳</div>
+                            <h3>Bowling Night</h3>
+                            <div class="event-details">
+                                <p><strong>📅 Datum:</strong> Freitag, 10. Januar 2026</p>
+                                <p><strong>🕖 Uhrzeit:</strong> 19:00 Uhr</p>
+                                <p><strong>📍 Ort:</strong> Bowling Center Heidenheim</p>
+                                <p><strong>👥 Teilnehmer:</strong> 12 / 20</p>
+                            </div>
+                            <button class="btn-primary">Teilnehmen</button>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Kommende Events</h3>
+                    <div class="events-list">
+                        <div class="event-item">
+                            <div class="event-icon">🍺</div>
+                            <div class="event-info">
+                                <h4>After Work Stammtisch</h4>
+                                <p>Do, 16. Januar - 18:00 Uhr | Brauhaus am Markt</p>
+                                <span class="participant-count">8 Teilnehmer</span>
+                            </div>
+                            <button class="btn-secondary">Dabei sein</button>
+                        </div>
+
+                        <div class="event-item">
+                            <div class="event-icon">⚽</div>
+                            <div class="event-info">
+                                <h4>Fußball-Stammtisch</h4>
+                                <p>Di, 21. Januar - 19:30 Uhr | Sportheim TSV</p>
+                                <span class="participant-count">14 Teilnehmer</span>
+                            </div>
+                            <button class="btn-secondary">Dabei sein</button>
+                        </div>
+
+                        <div class="event-item">
+                            <div class="event-icon">🎮</div>
+                            <div class="event-info">
+                                <h4>Gaming Night</h4>
+                                <p>Fr, 24. Januar - 20:00 Uhr | Online (Discord)</p>
+                                <span class="participant-count">6 Teilnehmer</span>
+                            </div>
+                            <button class="btn-secondary">Dabei sein</button>
+                        </div>
+
+                        <div class="event-item">
+                            <div class="event-icon">🎿</div>
+                            <div class="event-info">
+                                <h4>Ski-Wochenende</h4>
+                                <p>Sa-So, 1.-2. Februar | Oberstdorf</p>
+                                <span class="participant-count">18 Teilnehmer</span>
+                            </div>
+                            <button class="btn-secondary">Dabei sein</button>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Interesse-Gruppen</h3>
+                    <div class="groups-list">
+                        <div class="group-card">
+                            <div class="group-icon">🏃</div>
+                            <div class="group-info">
+                                <h4>Lauftreff</h4>
+                                <p>23 Mitglieder</p>
+                            </div>
+                            <button class="btn-secondary">Beitreten</button>
+                        </div>
+
+                        <div class="group-card">
+                            <div class="group-icon">📚</div>
+                            <div class="group-info">
+                                <h4>Buchclub</h4>
+                                <p>15 Mitglieder</p>
+                            </div>
+                            <button class="btn-secondary">Beitreten</button>
+                        </div>
+
+                        <div class="group-card">
+                            <div class="group-icon">🎸</div>
+                            <div class="group-info">
+                                <h4>Band/Musik</h4>
+                                <p>9 Mitglieder</p>
+                            </div>
+                            <button class="btn-secondary">Beitreten</button>
+                        </div>
+
+                        <div class="group-card">
+                            <div class="group-icon">🚴</div>
+                            <div class="group-info">
+                                <h4>Bike-Touren</h4>
+                                <p>31 Mitglieder</p>
+                            </div>
+                            <button class="btn-secondary">Beitreten</button>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary">Event erstellen</button>
+                </div>
+            </section>
+
+            <!-- Install Prompt -->
             <section class="install-prompt" id="installPrompt" style="display: none;">
                 <div class="install-card">
-                    <h3>Install App</h3>
-                    <p>Install this app on your device for a better experience!</p>
-                    <button id="installButton" class="btn-primary">Install</button>
-                    <button id="dismissButton" class="btn-secondary">Maybe Later</button>
+                    <h3>App installieren</h3>
+                    <p>Installiere die Artivion App auf deinem Gerät für schnelleren Zugriff!</p>
+                    <button id="installButton" class="btn-primary">Installieren</button>
+                    <button id="dismissButton" class="btn-secondary">Später</button>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2025 My PWA. All rights reserved.</p>
+            <p>&copy; 2025 Artivion. Alle Rechte vorbehalten.</p>
         </footer>
     </div>
 
