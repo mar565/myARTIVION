@@ -25,32 +25,85 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <!-- Modern Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-logo">
+                <img src="/images/myartivion-logo.svg" alt="MyARTIVION Logo">
+                <div class="sidebar-logo-text">
+                    <h1>MyARTIVION</h1>
+                    <p>Mitarbeiter-Portal</p>
+                </div>
+            </a>
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                <span>☰</span>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item active" data-section="home">
+                <span class="nav-item-icon">🏠</span>
+                <span class="nav-item-text">Home</span>
+            </div>
+            <div class="nav-item" data-section="benefits">
+                <span class="nav-item-icon">🎁</span>
+                <span class="nav-item-text">Benefits</span>
+            </div>
+            <div class="nav-item" data-section="news">
+                <span class="nav-item-icon">📰</span>
+                <span class="nav-item-text">News & Events</span>
+            </div>
+            <div class="nav-item" data-section="salary">
+                <span class="nav-item-icon">💰</span>
+                <span class="nav-item-text">Gehalt</span>
+            </div>
+            <div class="nav-item" data-section="time">
+                <span class="nav-item-icon">⏰</span>
+                <span class="nav-item-text">Zeiterfassung</span>
+            </div>
+            <div class="nav-item" data-section="vacation">
+                <span class="nav-item-icon">🏖️</span>
+                <span class="nav-item-text">Urlaub</span>
+            </div>
+            <div class="nav-item" data-section="social">
+                <span class="nav-item-icon">🤝</span>
+                <span class="nav-item-text">Social Hub</span>
+            </div>
+            <div class="nav-item" data-section="onboarding">
+                <span class="nav-item-icon">🎓</span>
+                <span class="nav-item-text">Training</span>
+            </div>
+            <div class="nav-item" data-section="tasks">
+                <span class="nav-item-icon">✅</span>
+                <span class="nav-item-text">Aufgaben</span>
+            </div>
+            <div class="nav-item" data-section="analytics">
+                <span class="nav-item-icon">📊</span>
+                <span class="nav-item-text">Analytics</span>
+            </div>
+            <div class="nav-item" data-section="wellbeing">
+                <span class="nav-item-icon">💚</span>
+                <span class="nav-item-text">Wohlbefinden</span>
+            </div>
+        </nav>
+    </aside>
+
     <div class="container">
         <header>
             <div class="header-content">
-                <div class="logo-container">
-                    <img src="/images/myartivion-logo.svg" alt="MyARTIVION Logo">
-                    <div>
-                        <h1>MyARTIVION</h1>
-                        <p class="subtitle">Mitarbeiter-Portal</p>
-                    </div>
+                <div class="header-left">
+                    <button class="sidebar-toggle mobile-menu-toggle" id="mobileSidebarToggle" style="display: none;" aria-label="Open menu">
+                        <span>☰</span>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Willkommen</h1>
+                </div>
+                <div class="header-search">
+                    <input type="text" placeholder="Suche...">
                 </div>
             </div>
         </header>
 
-        <nav class="main-nav">
-            <button class="nav-btn active" data-section="home">Home</button>
-            <button class="nav-btn" data-section="benefits">Benefits</button>
-            <button class="nav-btn" data-section="news">News</button>
-            <button class="nav-btn" data-section="salary">Gehalt</button>
-            <button class="nav-btn" data-section="time">Zeiterfassung</button>
-            <button class="nav-btn" data-section="vacation">Urlaub</button>
-            <button class="nav-btn" data-section="social">Social Hub</button>
-            <button class="nav-btn" data-section="onboarding">Training</button>
-            <button class="nav-btn" data-section="tasks">Aufgaben</button>
-            <button class="nav-btn" data-section="analytics">Analytics</button>
-            <button class="nav-btn" data-section="wellbeing">Wohlbefinden</button>
-        </nav>
+        <!-- Old nav hidden in CSS -->
 
         <main>
             <!-- Home Section -->
@@ -1230,6 +1283,32 @@
         <footer>
             <p>&copy; 2025 MyARTIVION. Powered by Artivion, Inc. Alle Rechte vorbehalten.</p>
         </footer>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-items">
+                <div class="mobile-nav-item active" data-section="home">
+                    <span class="mobile-nav-icon">🏠</span>
+                    <span class="mobile-nav-label">Home</span>
+                </div>
+                <div class="mobile-nav-item" data-section="benefits">
+                    <span class="mobile-nav-icon">🎁</span>
+                    <span class="mobile-nav-label">Benefits</span>
+                </div>
+                <div class="mobile-nav-item" data-section="news">
+                    <span class="mobile-nav-icon">📰</span>
+                    <span class="mobile-nav-label">News</span>
+                </div>
+                <div class="mobile-nav-item" data-section="tasks">
+                    <span class="mobile-nav-icon">✅</span>
+                    <span class="mobile-nav-label">Aufgaben</span>
+                </div>
+                <div class="mobile-nav-item" data-section="wellbeing">
+                    <span class="mobile-nav-icon">💚</span>
+                    <span class="mobile-nav-label">Mehr</span>
+                </div>
+            </div>
+        </nav>
     </div>
 
     <!-- AI Chatbot Widget -->
