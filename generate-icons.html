@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .controls {
+            margin-bottom: 30px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        input[type="text"] {
+            width: 300px;
+        }
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        button:hover {
+            background-color: #1976D2;
+        }
+        .preview {
+            margin-top: 30px;
+        }
+        .icon-preview {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 5px;
+        }
+        .instructions {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PWA Icon Generator</h1>
+
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Enter your app name or initials</li>
+            <li>Choose a background color</li>
+            <li>Click "Generate Icons"</li>
+            <li>Right-click each icon and "Save Image As..."</li>
+            <li>Save to the <code>/icons/</code> folder with the correct filename</li>
+        </ol>
+    </div>
+
+    <div class="controls">
+        <div>
+            <label for="appName">App Name/Initials:</label><br>
+            <input type="text" id="appName" value="PWA" placeholder="Enter app name or initials">
+        </div>
+        <div>
+            <label for="bgColor">Background Color:</label><br>
+            <input type="color" id="bgColor" value="#2196F3">
+        </div>
+        <div>
+            <button onclick="generateIcons()">Generate Icons</button>
+        </div>
+    </div>
+
+    <div class="preview" id="preview"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+
+        function generateIcons() {
+            const appName = document.getElementById('appName').value || 'PWA';
+            const bgColor = document.getElementById('bgColor').value;
+            const preview = document.getElementById('preview');
+
+            preview.innerHTML = '<h2>Generated Icons (Right-click to save):</h2>';
+
+            sizes.forEach(size => {
+                const container = document.createElement('div');
+                container.className = 'icon-preview';
+
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+
+                const ctx = canvas.getContext('2d');
+
+                // Draw background
+                ctx.fillStyle = bgColor;
+                ctx.fillRect(0, 0, size, size);
+
+                // Draw text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = `bold ${size * 0.4}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(appName, size / 2, size / 2);
+
+                const label = document.createElement('div');
+                label.textContent = `icon-${size}x${size}.png`;
+                label.style.fontSize = '12px';
+                label.style.marginTop = '5px';
+
+                container.appendChild(canvas);
+                container.appendChild(label);
+                preview.appendChild(container);
+            });
+        }
+
+        // Generate default icons on load
+        window.addEventListener('load', generateIcons);
+    </script>
+</body>
+</html>

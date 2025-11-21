@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Progressive Web App optimized for mobile and desktop">
+    <meta name="theme-color" content="#2196F3">
+
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="My PWA">
+
+    <title>My Progressive Web App</title>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to My PWA</h1>
+            <p class="subtitle">Optimized for mobile and desktop</p>
+        </header>
+
+        <main>
+            <section class="content">
+                <h2>Getting Started</h2>
+                <p>This is a Progressive Web App template ready for customization.</p>
+
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>📱 Mobile Optimized</h3>
+                        <p>Responsive design that works on all devices</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>💻 Desktop Ready</h3>
+                        <p>Fully functional on desktop browsers</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>📲 Installable</h3>
+                        <p>Can be installed as a native app</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>⚡ Fast & Offline</h3>
+                        <p>Works offline with service worker caching</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="install-prompt" id="installPrompt" style="display: none;">
+                <div class="install-card">
+                    <h3>Install App</h3>
+                    <p>Install this app on your device for a better experience!</p>
+                    <button id="installButton" class="btn-primary">Install</button>
+                    <button id="dismissButton" class="btn-secondary">Maybe Later</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 My PWA. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+</body>
+</html>
