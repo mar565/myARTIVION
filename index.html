@@ -1277,6 +1277,16 @@
     </div>
 
     <!-- Scripts -->
+    <script src="/js/auth.js"></script>
+    <script>
+        // Check authentication before loading app
+        Auth.requireAuth();
+
+        // Initialize auth UI when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            Auth.initAuthUI();
+        });
+    </script>
     <script src="/js/app.js"></script>
 </body>
 </html>
