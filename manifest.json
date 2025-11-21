@@ -1,11 +1,11 @@
 {
-  "name": "My Progressive Web App",
-  "short_name": "My PWA",
-  "description": "A Progressive Web App optimized for mobile and desktop",
+  "name": "MyARTIVION Patient Portal",
+  "short_name": "MyARTIVION",
+  "description": "Your comprehensive patient portal for managing cardiovascular health with secure access to medical records and care team connections",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2196F3",
+  "theme_color": "#00558C",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -57,7 +57,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["productivity"],
+  "categories": ["health", "medical", "lifestyle"],
   "screenshots": [],
   "shortcuts": []
 }
