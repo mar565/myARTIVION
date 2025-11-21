@@ -4,6 +4,53 @@ const installPrompt = document.getElementById('installPrompt');
 const installButton = document.getElementById('installButton');
 const dismissButton = document.getElementById('dismissButton');
 
+// Navigation Handler
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('App initialized');
+  updateOnlineStatus();
+  initializeNavigation();
+});
+
+function initializeNavigation() {
+  const navButtons = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('.content-section');
+
+  // Add click handlers to navigation buttons
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetSection = button.getAttribute('data-section');
+
+      // Update active states
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Show target section, hide others
+      sections.forEach(section => {
+        if (section.id === targetSection) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
+        }
+      });
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Save current section to localStorage
+      localStorage.setItem('currentSection', targetSection);
+    });
+  });
+
+  // Restore last viewed section on load
+  const savedSection = localStorage.getItem('currentSection');
+  if (savedSection) {
+    const targetButton = document.querySelector(`[data-section="${savedSection}"]`);
+    if (targetButton) {
+      targetButton.click();
+    }
+  }
+}
+
 // Register Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -119,12 +166,6 @@ function updateOnlineStatus() {
 
 window.addEventListener('online', updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('App initialized');
-  updateOnlineStatus();
-});
 
 // Handle page visibility
 document.addEventListener('visibilitychange', () => {
