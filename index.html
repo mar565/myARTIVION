@@ -1232,6 +1232,50 @@
         </footer>
     </div>
 
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header" id="chatbotHeader">
+            <div class="chatbot-header-content">
+                <div class="chatbot-icon">🤖</div>
+                <div class="chatbot-title">
+                    <h3>MyARTIVION Assistant</h3>
+                    <p class="chatbot-subtitle">AI-gestützter FAQ-Bot</p>
+                </div>
+            </div>
+            <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle chatbot">
+                <span class="toggle-icon">▼</span>
+            </button>
+        </div>
+
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-welcome">
+                    <div class="welcome-icon">👋</div>
+                    <p>Hallo! Ich bin dein MyARTIVION Assistant. Ich kann dir Fragen zu Unternehmensrichtlinien, Benefits, Events und mehr beantworten.</p>
+                </div>
+            </div>
+
+            <div class="chatbot-input-container">
+                <input
+                    type="text"
+                    class="chatbot-input"
+                    id="chatbotInput"
+                    placeholder="Stelle eine Frage..."
+                    disabled
+                    readonly
+                />
+                <button class="chatbot-send-btn" id="chatbotSend" disabled>
+                    <span>📤</span>
+                </button>
+            </div>
+
+            <div class="chatbot-footer-note">
+                <span class="lock-icon">🔒</span>
+                <span>Lokal gehostet • Deine Daten bleiben bei Artivion</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="/js/app.js"></script>
 </body>
