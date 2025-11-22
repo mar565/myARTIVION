@@ -495,6 +495,29 @@ main {
     color: var(--warning-color);
 }
 
+/* Company Building Image */
+.company-image {
+    width: 100%;
+    margin: var(--spacing-lg) 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.company-image:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.building-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;
+}
+
 /* Quick Stats (Home) */
 .quick-stats {
     display: grid;
