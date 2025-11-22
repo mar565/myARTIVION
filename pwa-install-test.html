@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Installation Debugger - MyARTIVION</title>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #00558C 0%, #7AC143 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 { color: #00558C; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 14px; }
+        .test-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00558C;
+        }
+        .test-section h2 { font-size: 18px; color: #00558C; margin-bottom: 15px; }
+        .status { padding: 15px; border-radius: 6px; margin: 10px 0; }
+        .status.success { background: #d4edda; border-left: 4px solid #28a745; }
+        .status.error { background: #f8d7da; border-left: 4px solid #dc3545; }
+        .status.warning { background: #fff3cd; border-left: 4px solid #ffc107; }
+        .status.info { background: #d1ecf1; border-left: 4px solid #17a2b8; }
+        button {
+            background: #00558C;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button:hover { background: #003d66; }
+        button.success { background: #28a745; }
+        button.danger { background: #dc3545; }
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .console {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        .step { margin: 10px 0; padding: 10px; background: white; border-radius: 4px; }
+        .step strong { color: #00558C; }
+        ol { margin-left: 20px; margin-top: 10px; }
+        li { margin: 8px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 PWA Installation Debugger</h1>
+        <p class="subtitle">Prüfe warum die PWA nicht installierbar angezeigt wird</p>
+
+        <div class="test-section">
+            <h2>📋 Installationskriterien</h2>
+            <div id="criteria"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>⚙️ Aktionen</h2>
+            <button onclick="runAllTests()">🔄 Tests neu ausführen</button>
+            <button onclick="clearCacheAndReload()" class="danger">🗑️ Cache leeren & neu laden</button>
+            <button onclick="forceInstallPrompt()" class="success">📱 Installation erzwingen</button>
+        </div>
+
+        <div class="test-section">
+            <h2>💡 Lösungsvorschläge</h2>
+            <div id="solutions"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📋 Console Log</h2>
+            <div class="console" id="console"></div>
+        </div>
+    </div>
+
+    <script>
+        const log = (msg) => {
+            const console = document.getElementById('console');
+            const time = new Date().toLocaleTimeString();
+            console.innerHTML += `[${time}] ${msg}<br>`;
+            console.scrollTop = console.scrollHeight;
+            window.console.log(msg);
+        };
+
+        let deferredPrompt = null;
+        let installable = false;
+
+        // Listen for beforeinstallprompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            log('✅ beforeinstallprompt event received!');
+            e.preventDefault();
+            deferredPrompt = e;
+            installable = true;
+            runAllTests();
+        });
+
+        // Listen for appinstalled
+        window.addEventListener('appinstalled', () => {
+            log('🎉 App wurde installiert!');
+            installable = false;
+            deferredPrompt = null;
+            runAllTests();
+        });
+
+        async function runAllTests() {
+            const criteriaDiv = document.getElementById('criteria');
+            const solutionsDiv = document.getElementById('solutions');
+            
+            let html = '';
+            let solutions = '';
+            let allPassed = true;
+
+            // Test 1: HTTPS
+            const isSecure = location.protocol === 'https:';
+            html += `<div class="status ${isSecure ? 'success' : 'error'}">
+                ${isSecure ? '✅' : '❌'} <strong>HTTPS:</strong> ${location.protocol}//${location.host}
+            </div>`;
+            if (!isSecure) {
+                allPassed = false;
+                solutions += '<div class="status error"><strong>Problem:</strong> PWAs erfordern HTTPS. Lokale Tests funktionieren nur auf localhost.</div>';
+            }
+
+            // Test 2: Manifest
+            try {
+                const manifestResp = await fetch('/manifest.json');
+                const manifest = await manifestResp.json();
+                const hasName = !!(manifest.name || manifest.short_name);
+                const hasStartUrl = !!manifest.start_url;
+                const hasDisplay = !!manifest.display;
+                const hasIcons = manifest.icons && manifest.icons.length >= 2;
+                const has192 = manifest.icons?.some(i => i.sizes.includes('192'));
+                const has512 = manifest.icons?.some(i => i.sizes.includes('512'));
+
+                html += `<div class="status ${hasName ? 'success' : 'error'}">
+                    ${hasName ? '✅' : '❌'} <strong>Manifest Name:</strong> ${manifest.name || 'FEHLT'}
+                </div>`;
+                html += `<div class="status ${hasStartUrl ? 'success' : 'error'}">
+                    ${hasStartUrl ? '✅' : '❌'} <strong>start_url:</strong> ${manifest.start_url || 'FEHLT'}
+                </div>`;
+                html += `<div class="status ${hasDisplay ? 'success' : 'error'}">
+                    ${hasDisplay ? '✅' : '❌'} <strong>display:</strong> ${manifest.display || 'FEHLT'}
+                </div>`;
+                html += `<div class="status ${has192 && has512 ? 'success' : 'error'}">
+                    ${has192 && has512 ? '✅' : '❌'} <strong>Icons:</strong> ${manifest.icons?.length || 0} Icons
+                    ${has192 ? '(192✓)' : '(192✗)'} ${has512 ? '(512✓)' : '(512✗)'}
+                </div>`;
+
+                if (!hasName || !hasStartUrl || !hasDisplay || !has192 || !has512) {
+                    allPassed = false;
+                    solutions += '<div class="status error"><strong>Problem:</strong> Manifest ist unvollständig. Prüfe /manifest.json</div>';
+                }
+            } catch (error) {
+                html += `<div class="status error">❌ <strong>Manifest:</strong> Fehler beim Laden - ${error.message}</div>`;
+                allPassed = false;
+                solutions += '<div class="status error"><strong>Problem:</strong> Manifest.json kann nicht geladen werden!</div>';
+            }
+
+            // Test 3: Service Worker
+            if ('serviceWorker' in navigator) {
+                const reg = await navigator.serviceWorker.getRegistration();
+                const hasServiceWorker = !!reg;
+                const isActive = reg?.active?.state === 'activated';
+
+                html += `<div class="status ${hasServiceWorker && isActive ? 'success' : 'error'}">
+                    ${hasServiceWorker && isActive ? '✅' : '❌'} <strong>Service Worker:</strong> 
+                    ${hasServiceWorker ? (isActive ? 'Aktiv' : reg?.active?.state || 'Installiert') : 'Nicht registriert'}
+                </div>`;
+
+                if (!hasServiceWorker || !isActive) {
+                    allPassed = false;
+                    solutions += '<div class="status error"><strong>Problem:</strong> Service Worker ist nicht aktiv. Lade die Seite neu.</div>';
+                }
+
+                // Test 4: Service Worker hat fetch handler
+                if (reg?.active) {
+                    html += `<div class="status success">
+                        ✅ <strong>Service Worker Scope:</strong> ${reg.scope}
+                    </div>`;
+                }
+            } else {
+                html += `<div class="status error">❌ <strong>Service Worker:</strong> Browser unterstützt keine Service Workers</div>`;
+                allPassed = false;
+            }
+
+            // Test 5: beforeinstallprompt Event
+            html += `<div class="status ${installable ? 'success' : 'warning'}">
+                ${installable ? '✅' : '⏳'} <strong>beforeinstallprompt Event:</strong> 
+                ${installable ? 'Empfangen - App ist installierbar!' : 'Noch nicht empfangen'}
+            </div>`;
+
+            // Test 6: Already installed?
+            const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+            html += `<div class="status ${isInstalled ? 'info' : 'success'}">
+                ${isInstalled ? 'ℹ️' : '✅'} <strong>Installation Status:</strong> 
+                ${isInstalled ? 'Bereits installiert' : 'Noch nicht installiert'}
+            </div>`;
+
+            criteriaDiv.innerHTML = html;
+
+            // Solutions
+            if (!installable && !isInstalled && allPassed) {
+                solutions += `
+                    <div class="status warning">
+                        <strong>⚠️ Alle Kriterien erfüllt, aber Installation wird nicht angeboten</strong>
+                        <p style="margin-top: 10px;">Chrome hat zusätzliche Kriterien:</p>
+                        <ol>
+                            <li><strong>User Engagement:</strong> Sie müssen die Seite mindestens 30 Sekunden lang nutzen</li>
+                            <li><strong>Mehrfache Besuche:</strong> Besuchen Sie die Seite mehrmals (2-3x)</li>
+                            <li><strong>Zeitverzögerung:</strong> Warten Sie 5 Minuten auf der Seite</li>
+                        </ol>
+                        <p style="margin-top: 10px;"><strong>Versuchen Sie:</strong></p>
+                        <div class="step">
+                            <strong>1.</strong> Navigieren Sie durch die App (klicken Sie auf verschiedene Bereiche)
+                        </div>
+                        <div class="step">
+                            <strong>2.</strong> Warten Sie 30-60 Sekunden
+                        </div>
+                        <div class="step">
+                            <strong>3.</strong> Schließen und öffnen Sie die Seite erneut
+                        </div>
+                        <div class="step">
+                            <strong>4.</strong> Prüfen Sie Chrome DevTools → Application → Manifest auf Warnungen
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (installable) {
+                solutions += `
+                    <div class="status success">
+                        <strong>✅ App ist installierbar!</strong>
+                        <p style="margin-top: 10px;">Das beforeinstallprompt Event wurde empfangen. Sie können jetzt:</p>
+                        <ol>
+                            <li>Auf das <strong>📱 Installieren</strong> Symbol in der Adressleiste klicken</li>
+                            <li>Chrome Menü (⋮) → "App installieren..."</li>
+                            <li>Auf den "Installieren" Button auf dieser Seite klicken</li>
+                        </ol>
+                    </div>
+                `;
+            }
+
+            if (isInstalled) {
+                solutions += `<div class="status info"><strong>ℹ️ App ist bereits installiert!</strong></div>`;
+            }
+
+            if (!solutions) {
+                solutions = '<div class="status success"><strong>✅ Keine Probleme gefunden!</strong></div>';
+            }
+
+            solutionsDiv.innerHTML = solutions;
+        }
+
+        async function clearCacheAndReload() {
+            log('🗑️ Lösche alle Caches...');
+            const keys = await caches.keys();
+            for (const key of keys) {
+                await caches.delete(key);
+                log(`  ✓ Cache gelöscht: ${key}`);
+            }
+            
+            const reg = await navigator.serviceWorker.getRegistration();
+            if (reg) {
+                log('🗑️ Deregistriere Service Worker...');
+                await reg.unregister();
+                log('  ✓ Service Worker deregistriert');
+            }
+            
+            log('🔄 Lade Seite neu in 2 Sekunden...');
+            setTimeout(() => location.reload(), 2000);
+        }
+
+        async function forceInstallPrompt() {
+            if (deferredPrompt) {
+                log('📱 Zeige Installations-Dialog...');
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                log(`Benutzer Entscheidung: ${outcome}`);
+                if (outcome === 'accepted') {
+                    log('✅ Installation akzeptiert!');
+                } else {
+                    log('❌ Installation abgelehnt');
+                }
+                deferredPrompt = null;
+                installable = false;
+                runAllTests();
+            } else {
+                alert('beforeinstallprompt Event wurde noch nicht empfangen.\n\nBitte:\n1. Nutzen Sie die App für 30-60 Sekunden\n2. Schließen und öffnen Sie die Seite neu\n3. Versuchen Sie es erneut');
+            }
+        }
+
+        // Run tests on load
+        window.addEventListener('load', () => {
+            log('🚀 PWA Installation Debugger gestartet');
+            runAllTests();
+        });
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(reg => log('✅ Service Worker registriert: ' + reg.scope))
+                .catch(err => log('❌ Service Worker Fehler: ' + err));
+        }
+    </script>
+</body>
+</html>
