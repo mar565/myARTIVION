@@ -78,21 +78,21 @@
       "short_name": "Benefits",
       "description": "Zeige meine Benefits",
       "url": "/?section=benefits",
-      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Urlaub",
       "short_name": "Urlaub",
       "description": "Urlaubsplaner",
       "url": "/?section=vacation",
-      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Social Hub",
       "short_name": "Events",
       "description": "After-Work Events",
       "url": "/?section=social",
-      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }

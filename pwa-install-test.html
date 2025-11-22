@@ -78,6 +78,20 @@
         <h1>🔍 PWA Installation Debugger</h1>
         <p class="subtitle">Prüfe warum die PWA nicht installierbar angezeigt wird</p>
 
+        <div class="test-section" style="background: #fff3cd; border-left-color: #ffc107;">
+            <h2>⚠️ WICHTIGER HINWEIS</h2>
+            <div class="status warning">
+                <strong>Du testest auf der falschen URL!</strong>
+                <p style="margin-top: 10px;">Diese Seite (<code>/pwa-install-test.html</code>) ist NICHT die <code>start_url</code> der PWA.</p>
+                <p style="margin-top: 10px;"><strong>Teste stattdessen auf:</strong></p>
+                <p style="margin-top: 5px;"><code>https://lemon-bush-04371db1e.3.azurestaticapps.net/</code></p>
+                <p style="margin-top: 10px;">Browser prüfen PWA-Installierbarkeit nur auf der in manifest.json definierten <code>start_url</code> ("/").</p>
+                <button onclick="window.location.href='/'" style="margin-top: 15px; background: #ffc107; color: #000;">
+                    🏠 Zur Haupt-App wechseln
+                </button>
+            </div>
+        </div>
+
         <div class="test-section">
             <h2>📋 Installationskriterien</h2>
             <div id="criteria"></div>
