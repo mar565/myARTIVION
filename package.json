@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "MyARTIVION Mitarbeiter-App - Progressive Web Application",
   "scripts": {
-    "build": "node generate-pwa-icons.js && echo 'Build completed - static files ready'",
-    "build:azure": "node generate-pwa-icons.js && echo 'Azure build completed'",
+    "build": "node generate-pwa-icons.js && mkdir -p build && cp -r *.html css js images icons manifest.json service-worker.js build/ 2>/dev/null || echo 'Files ready in root'",
+    "build:azure": "npm run build",
     "generate-icons": "node generate-pwa-icons.js",
     "start": "python3 -m http.server 8000",
     "dev": "python3 -m http.server 8000",
