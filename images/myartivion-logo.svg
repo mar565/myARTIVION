@@ -9,21 +9,21 @@
   <!-- Centered layered triangle pattern - matching your logo -->
   <g transform="translate(230, 175)">
     <!-- Outermost layers - very light -->
-    <polygon points="0,-140 145,105 -145,105" fill="#7AC143" opacity="0.12"/>
-    <polygon points="0,-125 130,95 -130,95" fill="#6CB844" opacity="0.18"/>
-    <polygon points="0,-110 115,82 -115,82" fill="#5FB045" opacity="0.25"/>
-    <polygon points="0,-95 100,70 -100,70" fill="#52A846" opacity="0.32"/>
-    <polygon points="0,-80 85,60 -85,60" fill="#45A047" opacity="0.42"/>
-    <polygon points="0,-65 70,48 -70,48" fill="#389848" opacity="0.55"/>
-    <polygon points="0,-50 55,38 -55,38" fill="#2B9049" opacity="0.68"/>
-    <polygon points="0,-35 40,25 -40,25" fill="#1E884A" opacity="0.82"/>
+    <polygon points="0,-245 254,184 -254,184" fill="#7AC143" opacity="0.12"/>
+    <polygon points="0,-219 228,166 -228,166" fill="#6CB844" opacity="0.18"/>
+    <polygon points="0,-193 201,144 -201,144" fill="#5FB045" opacity="0.25"/>
+    <polygon points="0,-166 175,123 -175,123" fill="#52A846" opacity="0.32"/>
+    <polygon points="0,-140 149,105 -149,105" fill="#45A047" opacity="0.42"/>
+    <polygon points="0,-114 123,84 -123,84" fill="#389848" opacity="0.55"/>
+    <polygon points="0,-88 96,67 -96,67" fill="#2B9049" opacity="0.68"/>
+    <polygon points="0,-61 70,44 -70,44" fill="#1E884A" opacity="0.82"/>
     <!-- Inner core - solid gradient -->
-    <polygon points="0,-20 25,12 -25,12" fill="url(#gradient1)" opacity="1"/>
+    <polygon points="0,-35 44,21 -44,21" fill="url(#gradient1)" opacity="1"/>
   </g>
 
   <!-- MyARTIVION text with proper styling -->
   <g transform="translate(460, 210)">
-    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="400" fill="#00558C" letter-spacing="-2">
+    <text x="0" y="0" font-family="Arial, Helvetica, sans-serif" font-size="145" font-weight="400" fill="#00558C" letter-spacing="-3">
       <tspan font-weight="300">My</tspan><tspan font-weight="700">ARTIVION</tspan>
     </text>
   </g>
