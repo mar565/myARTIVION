@@ -3,12 +3,14 @@ let deferredPrompt;
 const installPrompt = document.getElementById('installPrompt');
 const installButton = document.getElementById('installButton');
 const dismissButton = document.getElementById('dismissButton');
+const headerInstallBtn = document.getElementById('headerInstallBtn');
 
 // Navigation Handler
 document.addEventListener('DOMContentLoaded', () => {
   console.log('App initialized');
   updateOnlineStatus();
   initializeNavigation();
+  checkIfInstalled();
 });
 
 function initializeNavigation() {
@@ -216,6 +218,133 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Check if already installed
+function checkIfInstalled() {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                      window.navigator.standalone ||
+                      document.referrer.includes('android-app://');
+
+  if (isStandalone && headerInstallBtn) {
+    headerInstallBtn.classList.add('installed');
+    headerInstallBtn.innerHTML = '<span class="install-icon">✅</span><span class="install-text">Installiert</span>';
+    headerInstallBtn.title = 'App ist bereits installiert';
+  }
+
+  return isStandalone;
+}
+
+// Show installation instructions modal
+function showInstallInstructions() {
+  const browser = getBrowserInfo();
+  let instructions = '';
+
+  if (browser.chrome || browser.edge) {
+    if (browser.mobile) {
+      instructions = `
+        <h4>Installation auf Android:</h4>
+        <ol>
+          <li>Tippe auf das Menü (⋮) oben rechts</li>
+          <li>Wähle <code>Zum Startbildschirm hinzufügen</code></li>
+          <li>Bestätige mit <code>Hinzufügen</code></li>
+        </ol>
+      `;
+    } else {
+      instructions = `
+        <h4>Installation auf Desktop:</h4>
+        <ol>
+          <li>Klicke auf das App-Symbol (⊕) in der Adressleiste</li>
+          <li>Oder: Menü → <code>App installieren...</code></li>
+          <li>Bestätige mit <code>Installieren</code></li>
+        </ol>
+      `;
+    }
+  } else if (browser.safari) {
+    instructions = `
+      <h4>Installation auf iOS:</h4>
+      <ol>
+        <li>Tippe auf das <strong>Teilen</strong>-Symbol (□↑)</li>
+        <li>Scrolle runter und wähle <code>Zum Home-Bildschirm</code></li>
+        <li>Tippe auf <code>Hinzufügen</code></li>
+      </ol>
+    `;
+  } else if (browser.firefox) {
+    instructions = `
+      <h4>Installation in Firefox:</h4>
+      <ol>
+        <li>Tippe auf das Menü (⋮) oben rechts</li>
+        <li>Wähle <code>Installieren</code> oder <code>Auf Startbildschirm</code></li>
+        <li>Bestätige die Installation</li>
+      </ol>
+    `;
+  } else {
+    instructions = `
+      <h4>Installation:</h4>
+      <p>Bitte verwenden Sie Chrome, Edge, Safari oder Firefox für die beste PWA-Unterstützung.</p>
+    `;
+  }
+
+  const modal = document.createElement('div');
+  modal.className = 'pwa-install-modal active';
+  modal.innerHTML = `
+    <div class="pwa-install-content">
+      <h3>📱 MyARTIVION installieren</h3>
+      <p>Installiere MyARTIVION als App auf deinem Gerät für schnelleren Zugriff und eine native App-Erfahrung.</p>
+      <div class="pwa-install-steps">
+        ${instructions}
+      </div>
+      <div class="pwa-install-buttons">
+        <button class="btn-secondary" onclick="this.closest('.pwa-install-modal').remove()">Schließen</button>
+      </div>
+    </div>
+  `;
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.remove();
+    }
+  });
+
+  document.body.appendChild(modal);
+}
+
+// Get browser info
+function getBrowserInfo() {
+  const ua = navigator.userAgent;
+  return {
+    chrome: /Chrome/.test(ua) && !/Edge/.test(ua),
+    edge: /Edg/.test(ua),
+    safari: /Safari/.test(ua) && !/Chrome/.test(ua),
+    firefox: /Firefox/.test(ua),
+    mobile: /Android|iPhone|iPad|iPod/.test(ua)
+  };
+}
+
+// Header install button click handler
+if (headerInstallBtn) {
+  headerInstallBtn.addEventListener('click', async () => {
+    if (checkIfInstalled()) {
+      return;
+    }
+
+    if (deferredPrompt) {
+      // Use native install prompt if available
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to install prompt: ${outcome}`);
+
+      if (outcome === 'accepted') {
+        headerInstallBtn.classList.add('installed');
+        headerInstallBtn.innerHTML = '<span class="install-icon">✅</span><span class="install-text">Installiert</span>';
+      }
+
+      deferredPrompt = null;
+    } else {
+      // Show manual installation instructions
+      showInstallInstructions();
+    }
+  });
+}
+
 // Listen for beforeinstallprompt event
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent the mini-infobar from appearing on mobile
@@ -224,7 +353,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Store the event so it can be triggered later
   deferredPrompt = e;
 
-  // Show the install prompt
+  // Update header button
+  if (headerInstallBtn && !checkIfInstalled()) {
+    headerInstallBtn.style.display = 'flex';
+  }
+
+  // Show the install prompt (legacy)
   if (installPrompt) {
     installPrompt.style.display = 'block';
   }
@@ -269,6 +403,12 @@ if (dismissButton) {
 // Listen for app installed event
 window.addEventListener('appinstalled', (event) => {
   console.log('PWA was installed successfully', event);
+
+  // Update header button
+  if (headerInstallBtn) {
+    headerInstallBtn.classList.add('installed');
+    headerInstallBtn.innerHTML = '<span class="install-icon">✅</span><span class="install-text">Installiert</span>';
+  }
 
   // Hide the install prompt
   if (installPrompt) {

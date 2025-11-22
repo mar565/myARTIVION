@@ -3177,3 +3177,208 @@ input:checked + .slider:before {
         padding: 0.3rem 0.6rem;
     }
 }
+
+/* ============================================
+   PWA Install Button Styles
+   ============================================ */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Install App Button */
+.install-app-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-teal) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+}
+
+.install-app-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, #003d66 0%, #008a94 100%);
+}
+
+.install-app-btn:active {
+    transform: translateY(0);
+}
+
+.install-app-btn.installed {
+    background: var(--success-color);
+    cursor: default;
+    pointer-events: none;
+}
+
+.install-app-btn.installed:hover {
+    transform: none;
+}
+
+.install-app-btn .install-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.install-app-btn .install-text {
+    font-size: 0.95rem;
+}
+
+/* Hide install button when not needed */
+.install-app-btn.hidden {
+    display: none;
+}
+
+/* PWA Install Modal */
+.pwa-install-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 1rem;
+}
+
+.pwa-install-modal.active {
+    display: flex;
+}
+
+.pwa-install-content {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pwa-install-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.pwa-install-content p {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.pwa-install-steps {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+}
+
+.pwa-install-steps h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.pwa-install-steps ol {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.pwa-install-steps li {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.pwa-install-steps code {
+    background: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.pwa-install-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.pwa-install-buttons button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pwa-install-buttons .btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.pwa-install-buttons .btn-primary:hover {
+    background: var(--secondary-color);
+}
+
+.pwa-install-buttons .btn-secondary {
+    background: var(--light-gray);
+    color: var(--text-color);
+}
+
+.pwa-install-buttons .btn-secondary:hover {
+    background: var(--border-color);
+}
+
+/* Mobile responsiveness for install button */
+@media (max-width: 768px) {
+    .install-app-btn .install-text {
+        display: none;
+    }
+    
+    .install-app-btn {
+        padding: 0.75rem;
+        min-width: 48px;
+        justify-content: center;
+    }
+    
+    .install-app-btn .install-icon {
+        font-size: 1.5rem;
+    }
+    
+    .header-search {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-search {
+        display: none;
+    }
+}
