@@ -1,10 +1,16 @@
-const CACHE_NAME = 'my-pwa-cache-v1';
+const CACHE_NAME = 'myartivion-pwa-v1';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/login.html',
+  '/magic-link.html',
   '/css/style.css',
   '/js/app.js',
-  '/manifest.json'
+  '/js/auth.js',
+  '/images/myartivion-logo.svg',
+  '/manifest.json',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png'
 ];
 
 // Install event - cache assets

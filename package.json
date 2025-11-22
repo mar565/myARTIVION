@@ -1,0 +1,21 @@
+{
+  "name": "myartivion-pwa",
+  "version": "1.0.0",
+  "description": "MyARTIVION Mitarbeiter-App - Progressive Web Application",
+  "scripts": {
+    "generate-icons": "node generate-pwa-icons.js",
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "pwa",
+    "employee-app",
+    "myartivion"
+  ],
+  "author": "Artivion, Inc.",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}
