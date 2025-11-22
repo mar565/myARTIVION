@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "MyARTIVION Mitarbeiter-App - Progressive Web Application",
   "scripts": {
-    "build": "node generate-pwa-icons.js && mkdir -p build && cp -r *.html css js images icons manifest.json service-worker.js build/ 2>/dev/null || echo 'Files ready in root'",
-    "build:azure": "npm run build",
+    "build": "node generate-pwa-icons.js",
+    "build:azure": "node generate-pwa-icons.js",
     "generate-icons": "node generate-pwa-icons.js",
     "start": "python3 -m http.server 8000",
-    "dev": "python3 -m http.server 8000",
-    "postinstall": "npm run generate-icons"
+    "dev": "python3 -m http.server 8000"
   },
   "keywords": [
     "pwa",
