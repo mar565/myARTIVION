@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MyARTIVION Login - Sicher anmelden">
+    <meta name="description" content="MyARTIVION Login - Secure login">
     <meta name="theme-color" content="#00558C">
     <title>Login - MyARTIVION</title>
 
-    <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
 
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
@@ -375,69 +374,66 @@
         <div class="logo-section">
             <img src="/images/myartivion-logo.svg" alt="MyARTIVION Logo">
             <h1>MyARTIVION</h1>
-            <p>Mitarbeiter-Portal</p>
+            <p>Employee Portal</p>
             <div class="demo-badge">DEMO MODE</div>
         </div>
 
-        <!-- Main Login Methods -->
         <div class="login-methods" id="loginMethods">
             <button class="btn btn-microsoft" id="btnMicrosoft">
                 <span class="btn-icon">🏢</span>
-                <span>Mit Microsoft anmelden</span>
+                <span>Sign in with Microsoft</span>
             </button>
 
             <div class="method-divider">
-                <span>oder</span>
+                <span>or</span>
             </div>
 
             <button class="btn btn-magic-link" id="btnMagicLink">
                 <span class="btn-icon">✉️</span>
-                <span>Magic Link per E-Mail</span>
+                <span>Magic Link via Email</span>
             </button>
         </div>
 
-        <!-- Magic Link Form -->
         <div class="magic-link-form" id="magicLinkForm">
             <div class="form-header">
-                <h2>Magic Link anfordern</h2>
-                <p>Wir senden dir einen sicheren Login-Link per E-Mail</p>
+                <h2>Request Magic Link</h2>
+                <p>We will send you a secure login link via email</p>
             </div>
 
             <form id="magicLinkEmailForm">
                 <div class="input-group">
-                    <label for="emailInput">E-Mail-Adresse</label>
+                    <label for="emailInput">Email Address</label>
                     <input
                         type="email"
                         id="emailInput"
-                        placeholder="deine.email@artivion.com"
+                        placeholder="your.email@artivion.com"
                         required
                     />
                 </div>
 
                 <button type="submit" class="btn btn-magic-link">
-                    <span>Magic Link senden</span>
+                    <span>Send Magic Link</span>
                 </button>
 
                 <button type="button" class="btn btn-back" id="btnBackToLogin">
-                    <span>Zurück</span>
+                    <span>Back</span>
                 </button>
             </form>
         </div>
 
         <div class="security-note">
             <span class="icon">🔒</span>
-            <p><strong>Sicherer Login</strong><br>
-            Deine Daten werden verschlüsselt übertragen und sicher gespeichert.</p>
+            <p><strong>Secure Login</strong><br>
+            Your data is transmitted encrypted and stored securely.</p>
         </div>
 
         <div class="footer-links">
-            <a href="#">Hilfe</a>
-            <a href="#">Datenschutz</a>
-            <a href="#">Impressum</a>
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Imprint</a>
         </div>
     </div>
 
-    <!-- Microsoft Login Modal -->
     <div class="modal-overlay" id="microsoftModal">
         <div class="microsoft-modal">
             <div class="microsoft-header">
@@ -453,12 +449,12 @@
             </div>
 
             <div class="microsoft-body" id="microsoftLoginStep">
-                <h3>Anmelden</h3>
-                <p>mit deinem Microsoft-Konto</p>
+                <h3>Sign in</h3>
+                <p>with your Microsoft account</p>
 
                 <form id="microsoftEmailForm">
                     <div class="input-group">
-                        <label>E-Mail oder Telefon</label>
+                        <label>Email or phone</label>
                         <input
                             type="email"
                             id="microsoftEmail"
@@ -467,32 +463,32 @@
                         />
                     </div>
 
-                    <button type="submit" class="btn-next">Weiter</button>
+                    <button type="submit" class="btn-next">Next</button>
                 </form>
             </div>
 
             <div class="microsoft-body" id="microsoftPasswordStep" style="display: none;">
-                <h3>Kennwort eingeben</h3>
+                <h3>Enter password</h3>
                 <p id="displayEmail"></p>
 
                 <form id="microsoftPasswordForm">
                     <div class="input-group">
-                        <label>Kennwort</label>
+                        <label>Password</label>
                         <input
                             type="password"
                             id="microsoftPassword"
-                            placeholder="Kennwort"
+                            placeholder="Password"
                             required
                         />
                     </div>
 
-                    <button type="submit" class="btn-next">Anmelden</button>
+                    <button type="submit" class="btn-next">Sign in</button>
                 </form>
             </div>
 
             <div class="loading-state" id="microsoftLoading">
                 <div class="spinner"></div>
-                <p>Sie werden angemeldet...</p>
+                <p>Signing you in...</p>
             </div>
         </div>
     </div>
