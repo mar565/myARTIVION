@@ -1,41 +1,53 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MyARTIVION Mitarbeiter-App - Deine zentrale Plattform für Benefits, News und mehr">
+    <meta name="description" content="MyARTIVION Employee App - Your central platform for benefits, news and more">
     <meta name="theme-color" content="#00558C">
 
-    <!-- PWA Meta Tags -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="MyARTIVION">
 
-    <title>MyARTIVION - Mitarbeiter-App</title>
+    <title data-de="MyARTIVION - Mitarbeiter-App">MyARTIVION - Employee App</title>
 
-    <!-- Manifest -->
     <link rel="manifest" href="/manifest.json">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png">
 
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+        .lang-toggle-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 15px;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        .lang-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
 <body>
-    <!-- Sidebar Overlay for Mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Modern Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <a href="#" class="sidebar-logo">
                 <img src="/images/myartivion-logo.svg" alt="MyARTIVION Logo">
                 <div class="sidebar-logo-text">
                     <h1>MyARTIVION</h1>
-                    <p>Mitarbeiter-Portal</p>
+                    <p data-de="Mitarbeiter-Portal">Employee Portal</p>
                 </div>
             </a>
         </div>
@@ -43,47 +55,47 @@
         <nav class="sidebar-nav">
             <div class="nav-item active" data-section="home">
                 <span class="nav-item-icon">🏠</span>
-                <span class="nav-item-text">Home</span>
+                <span class="nav-item-text" data-de="Home">Home</span>
             </div>
             <div class="nav-item" data-section="benefits">
                 <span class="nav-item-icon">🎁</span>
-                <span class="nav-item-text">Benefits</span>
+                <span class="nav-item-text" data-de="Benefits">Benefits</span>
             </div>
             <div class="nav-item" data-section="news">
                 <span class="nav-item-icon">📰</span>
-                <span class="nav-item-text">News</span>
+                <span class="nav-item-text" data-de="News">News</span>
             </div>
             <div class="nav-item" data-section="salary">
                 <span class="nav-item-icon">💰</span>
-                <span class="nav-item-text">Gehalt</span>
+                <span class="nav-item-text" data-de="Gehalt">Salary</span>
             </div>
             <div class="nav-item" data-section="time">
                 <span class="nav-item-icon">⏰</span>
-                <span class="nav-item-text">Zeiterfassung</span>
+                <span class="nav-item-text" data-de="Zeiterfassung">Time Tracking</span>
             </div>
             <div class="nav-item" data-section="vacation">
                 <span class="nav-item-icon">🏖️</span>
-                <span class="nav-item-text">Urlaub</span>
+                <span class="nav-item-text" data-de="Urlaub">Vacation</span>
             </div>
             <div class="nav-item" data-section="social">
                 <span class="nav-item-icon">🤝</span>
-                <span class="nav-item-text">Social Hub</span>
+                <span class="nav-item-text" data-de="Social Hub">Social Hub</span>
             </div>
             <div class="nav-item" data-section="onboarding">
                 <span class="nav-item-icon">🎓</span>
-                <span class="nav-item-text">Training</span>
+                <span class="nav-item-text" data-de="Training">Training</span>
             </div>
             <div class="nav-item" data-section="tasks">
                 <span class="nav-item-icon">✅</span>
-                <span class="nav-item-text">Aufgaben</span>
+                <span class="nav-item-text" data-de="Aufgaben">Tasks</span>
             </div>
             <div class="nav-item" data-section="analytics">
                 <span class="nav-item-icon">📊</span>
-                <span class="nav-item-text">Analytics</span>
+                <span class="nav-item-text" data-de="Analytics">Analytics</span>
             </div>
             <div class="nav-item" data-section="wellbeing">
                 <span class="nav-item-icon">💚</span>
-                <span class="nav-item-text">Wohlbefinden</span>
+                <span class="nav-item-text" data-de="Wohlbefinden">Wellbeing</span>
             </div>
         </nav>
 
@@ -101,796 +113,787 @@
                     <button class="sidebar-toggle mobile-menu-toggle" id="mobileSidebarToggle" style="display: none;" aria-label="Open menu">
                         <span>☰</span>
                     </button>
-                    <h1 class="page-title" id="pageTitle">Willkommen</h1>
+                    <h1 class="page-title" id="pageTitle" data-de="Willkommen">Welcome</h1>
                 </div>
                 <div class="header-right">
-                    <button class="install-app-btn" id="headerInstallBtn" title="App installieren">
+                    <button id="langToggleBtn" class="lang-toggle-btn" title="Sprache wechseln / Change Language">DE</button>
+                    
+                    <button class="install-app-btn" id="headerInstallBtn" title="Install App" data-de="App installieren">
                         <span class="install-icon">📱</span>
-                        <span class="install-text">Installieren</span>
+                        <span class="install-text" data-de="Installieren">Install</span>
                     </button>
                     <div class="header-search">
-                        <input type="text" placeholder="Suche...">
+                        <input type="text" placeholder="Search..." data-de="Suche...">
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Old nav hidden in CSS -->
-
         <main>
-            <!-- Home Section -->
             <section class="content-section active" id="home">
                 <div class="content">
-                    <h2>Willkommen bei MyARTIVION</h2>
+                    <h2 data-de="Willkommen bei MyARTIVION">Welcome to MyARTIVION</h2>
 
                     <div class="company-image">
-                        <img src="/images/artivion-building.jpg" alt="Artivion Firmengebäude" class="building-image">
+                        <img src="/images/artivion-building.jpg" alt="Artivion HQ" class="building-image">
                     </div>
 
-                    <p><strong>Mit Herz und Code – Gestalte die Artivion App der Zukunft</strong></p>
-                    <p>Unsere Mitarbeitenden sind das Herz unseres Unternehmens. Doch im Arbeitsalltag gehen viele wertvolle Informationen unter: unsere Benefits wie BusinessBike, Corporate Benefits, WellPass oder PKW-Leasing sind oft schwer auffindbar, und auch HR- oder Management-News werden bisher über viele verschiedene Kanäle verteilt.</p>
-                    <p>Gleichzeitig wünschen sich Mitarbeitende mehr Transparenz über ihre persönliche Gesamtvergütung („Total Rewards") und eine moderne, zentrale Plattform, die alles Wichtige an einem Ort bündelt.</p>
-                    <p><strong>Diese innovative App motiviert, informiert und verbindet – und macht unser Arbeitgeberversprechen digital erlebbar.</strong></p>
+                    <p data-de="<strong>Mit Herz und Code – Gestalte die Artivion App der Zukunft</strong>"><strong>With Heart and Code – Shape the Artivion App of the Future</strong></p>
+                    <p data-de="Unsere Mitarbeitenden sind das Herz unseres Unternehmens. Doch im Arbeitsalltag gehen viele wertvolle Informationen unter: unsere Benefits wie BusinessBike, Corporate Benefits, WellPass oder PKW-Leasing sind oft schwer auffindbar, und auch HR- oder Management-News werden bisher über viele verschiedene Kanäle verteilt.">Our employees are the heart of our company. But in everyday work, a lot of valuable information gets lost: our benefits like BusinessBike, Corporate Benefits, WellPass or car leasing are often hard to find, and HR or management news has been distributed across many different channels.</p>
+                    <p data-de="Gleichzeitig wünschen sich Mitarbeitende mehr Transparenz über ihre persönliche Gesamtvergütung („Total Rewards&quot;) und eine moderne, zentrale Plattform, die alles Wichtige an einem Ort bündelt.">At the same time, employees want more transparency about their personal total compensation ("Total Rewards") and a modern, central platform that bundles everything important in one place.</p>
+                    <p data-de="<strong>Diese innovative App motiviert, informiert und verbindet – und macht unser Arbeitgeberversprechen digital erlebbar.</strong>"><strong>This innovative app motivates, informs, and connects – making our employer promise a digital experience.</strong></p>
 
                     <div class="quick-stats">
                         <div class="stat-card">
                             <div class="stat-value">8.450€</div>
-                            <div class="stat-label">Genutzte Benefits (Jahreswert)</div>
+                            <div class="stat-label" data-de="Genutzte Benefits (Jahreswert)">Used Benefits (Annual Value)</div>
                         </div>
                         <div class="stat-card highlight">
                             <div class="stat-value">4.200€</div>
-                            <div class="stat-label">Ungenutzte Benefits (Potenzial)</div>
+                            <div class="stat-label" data-de="Ungenutzte Benefits (Potenzial)">Unused Benefits (Potential)</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-value">12.650€</div>
-                            <div class="stat-label">Gesamt-Benefits-Wert</div>
+                            <div class="stat-label" data-de="Gesamt-Benefits-Wert">Total Benefits Value</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Benefits Section -->
             <section class="content-section" id="benefits">
                 <div class="content">
-                    <h2>Deine Benefits Übersicht</h2>
-                    <p>Entdecke den wahren Wert deiner Gesamtvergütung bei Artivion</p>
+                    <h2 data-de="Deine Benefits Übersicht">Your Benefits Overview</h2>
+                    <p data-de="Entdecke den wahren Wert deiner Gesamtvergütung bei Artivion">Discover the true value of your total compensation at Artivion</p>
 
                     <div class="benefits-summary">
                         <div class="benefit-total used">
-                            <h3>Genutzte Benefits</h3>
+                            <h3 data-de="Genutzte Benefits">Used Benefits</h3>
                             <div class="total-amount">8.450€</div>
-                            <div class="total-label">pro Jahr</div>
+                            <div class="total-label" data-de="pro Jahr">per year</div>
                         </div>
                         <div class="benefit-total unused">
-                            <h3>Ungenutztes Potenzial</h3>
+                            <h3 data-de="Ungenutztes Potenzial">Unused Potential</h3>
                             <div class="total-amount">4.200€</div>
-                            <div class="total-label">verpasse nicht!</div>
+                            <div class="total-label" data-de="verpasse nicht!">don't miss out!</div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Aktiv genutzte Benefits</h3>
+                    <h3 class="section-title" data-de="Aktiv genutzte Benefits">Actively used Benefits</h3>
                     <div class="benefits-list">
                         <div class="benefit-card active">
                             <div class="benefit-icon">🚴</div>
                             <div class="benefit-info">
-                                <h4>Business Bike</h4>
-                                <p>Dein E-Bike über Gehaltsumwandlung</p>
+                                <h4 data-de="Business Bike">Business Bike</h4>
+                                <p data-de="Dein E-Bike über Gehaltsumwandlung">Your e-bike via salary sacrifice</p>
                             </div>
-                            <div class="benefit-value">1.200€/Jahr</div>
+                            <div class="benefit-value" data-de="1.200€/Jahr">1,200€/year</div>
                         </div>
 
                         <div class="benefit-card active">
                             <div class="benefit-icon">💪</div>
                             <div class="benefit-info">
-                                <h4>Firmenfitness Wellpass</h4>
-                                <p>Zugang zu über 6.000 Fitness-Studios</p>
+                                <h4 data-de="Firmenfitness Wellpass">Corporate Fitness Wellpass</h4>
+                                <p data-de="Zugang zu über 6.000 Fitness-Studios">Access to over 6,000 fitness studios</p>
                             </div>
-                            <div class="benefit-value">480€/Jahr</div>
+                            <div class="benefit-value" data-de="480€/Jahr">480€/year</div>
                         </div>
 
                         <div class="benefit-card active">
                             <div class="benefit-icon">🍽️</div>
                             <div class="benefit-info">
-                                <h4>Kantine & Getränke</h4>
-                                <p>Kostenlose Getränke + 2,50€ Essenszuschuss täglich</p>
+                                <h4 data-de="Kantine & Getränke">Canteen & Beverages</h4>
+                                <p data-de="Kostenlose Getränke + 2,50€ Essenszuschuss täglich">Free drinks + €2.50 daily food allowance</p>
                             </div>
-                            <div class="benefit-value">650€/Jahr</div>
+                            <div class="benefit-value" data-de="650€/Jahr">650€/year</div>
                         </div>
 
                         <div class="benefit-card active">
                             <div class="benefit-icon">📈</div>
                             <div class="benefit-info">
-                                <h4>Mitarbeiteraktienplan (ESPP)</h4>
-                                <p>Vergünstigter Kauf von Unternehmensaktien</p>
+                                <h4 data-de="Mitarbeiteraktienplan (ESPP)">Employee Stock Purchase Plan (ESPP)</h4>
+                                <p data-de="Vergünstigter Kauf von Unternehmensaktien">Discounted purchase of company shares</p>
                             </div>
-                            <div class="benefit-value">2.400€/Jahr</div>
+                            <div class="benefit-value" data-de="2.400€/Jahr">2,400€/year</div>
                         </div>
 
                         <div class="benefit-card active">
                             <div class="benefit-icon">🏖️</div>
                             <div class="benefit-info">
-                                <h4>30 Tage Urlaub</h4>
-                                <p>Vollzeit-Urlaubsanspruch</p>
+                                <h4 data-de="30 Tage Urlaub">30 Days Vacation</h4>
+                                <p data-de="Vollzeit-Urlaubsanspruch">Full-time vacation entitlement</p>
                             </div>
-                            <div class="benefit-value">3.720€/Jahr</div>
+                            <div class="benefit-value" data-de="3.720€/Jahr">3,720€/year</div>
                         </div>
                     </div>
 
-                    <h3 class="section-title unused-title">Noch nicht genutzte Benefits</h3>
+                    <h3 class="section-title unused-title" data-de="Noch nicht genutzte Benefits">Unused Benefits</h3>
                     <div class="benefits-list">
                         <div class="benefit-card inactive">
                             <div class="benefit-icon">🚗</div>
                             <div class="benefit-info">
-                                <h4>Motivationsleasing PKW</h4>
-                                <p>Fahrzeug-Leasing mit attraktiven Konditionen</p>
+                                <h4 data-de="Motivationsleasing PKW">Motivational Car Leasing</h4>
+                                <p data-de="Fahrzeug-Leasing mit attraktiven Konditionen">Car leasing with attractive conditions</p>
                             </div>
-                            <div class="benefit-value">2.800€/Jahr</div>
-                            <button class="btn-activate">Aktivieren</button>
+                            <div class="benefit-value" data-de="2.800€/Jahr">2,800€/year</div>
+                            <button class="btn-activate" data-de="Aktivieren">Activate</button>
                         </div>
 
                         <div class="benefit-card inactive">
                             <div class="benefit-icon">🛍️</div>
                             <div class="benefit-info">
-                                <h4>Corporate Benefits</h4>
-                                <p>Rabatte bei über 800 Marken</p>
+                                <h4 data-de="Corporate Benefits">Corporate Benefits</h4>
+                                <p data-de="Rabatte bei über 800 Marken">Discounts at over 800 brands</p>
                             </div>
-                            <div class="benefit-value">600€/Jahr</div>
-                            <button class="btn-activate">Aktivieren</button>
+                            <div class="benefit-value" data-de="600€/Jahr">600€/year</div>
+                            <button class="btn-activate" data-de="Aktivieren">Activate</button>
                         </div>
 
                         <div class="benefit-card inactive">
                             <div class="benefit-icon">👶</div>
                             <div class="benefit-info">
-                                <h4>Sommerbetreuung für Kinder</h4>
-                                <p>Ferienbetreuung in den Sommermonaten</p>
+                                <h4 data-de="Sommerbetreuung für Kinder">Summer Childcare</h4>
+                                <p data-de="Ferienbetreuung in den Sommermonaten">Holiday care during the summer months</p>
                             </div>
-                            <div class="benefit-value">800€/Jahr</div>
-                            <button class="btn-activate">Mehr erfahren</button>
+                            <div class="benefit-value" data-de="800€/Jahr">800€/year</div>
+                            <button class="btn-activate" data-de="Mehr erfahren">Learn more</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- News Feed Section -->
             <section class="content-section" id="news">
                 <div class="content">
-                    <h2>News & Events</h2>
-                    <p>Bleib auf dem Laufenden mit den neuesten Nachrichten und Veranstaltungen</p>
+                    <h2 data-de="News & Events">News & Events</h2>
+                    <p data-de="Bleib auf dem Laufenden mit den neuesten Nachrichten und Veranstaltungen">Stay up to date with the latest news and events</p>
 
                     <div class="news-feed">
                         <article class="news-card featured">
                             <div class="news-header">
-                                <span class="news-badge">Wichtig</span>
-                                <span class="news-date">18. Dezember 2025</span>
+                                <span class="news-badge" data-de="Wichtig">Important</span>
+                                <span class="news-date" data-de="18. Dezember 2025">December 18, 2025</span>
                             </div>
                             <div class="news-image">🎄</div>
-                            <h3>Weihnachtsfeier 2025 - Save the Date!</h3>
-                            <p>Liebe Kolleginnen und Kollegen, wir laden herzlich zu unserer diesjährigen Weihnachtsfeier ein!</p>
+                            <h3 data-de="Weihnachtsfeier 2025 - Save the Date!">Christmas Party 2025 - Save the Date!</h3>
+                            <p data-de="Liebe Kolleginnen und Kollegen, wir laden herzlich zu unserer diesjährigen Weihnachtsfeier ein!">Dear colleagues, we cordially invite you to this year's Christmas party!</p>
                             <div class="news-details">
-                                <p><strong>📅 Datum:</strong> Freitag, 20. Dezember 2025</p>
-                                <p><strong>🕕 Uhrzeit:</strong> 18:00 Uhr</p>
-                                <p><strong>📍 Ort:</strong> Eventhalle Jägermeister, Heidenheim</p>
-                                <p><strong>🎉 Programm:</strong> Gemeinsames Dinner, Live-Musik, Tombola mit tollen Preisen</p>
+                                <p data-de="<strong>📅 Datum:</strong> Freitag, 20. Dezember 2025"><strong>📅 Date:</strong> Friday, December 20, 2025</p>
+                                <p data-de="<strong>🕕 Uhrzeit:</strong> 18:00 Uhr"><strong>🕕 Time:</strong> 6:00 PM</p>
+                                <p data-de="<strong>📍 Ort:</strong> Eventhalle Jägermeister, Heidenheim"><strong>📍 Location:</strong> Eventhall Jägermeister, Heidenheim</p>
+                                <p data-de="<strong>🎉 Programm:</strong> Gemeinsames Dinner, Live-Musik, Tombola mit tollen Preisen"><strong>🎉 Program:</strong> Joint dinner, live music, raffle with great prizes</p>
                             </div>
-                            <button class="btn-primary">Jetzt anmelden</button>
+                            <button class="btn-primary" data-de="Jetzt anmelden">Register now</button>
                         </article>
 
                         <article class="news-card">
                             <div class="news-header">
-                                <span class="news-badge event">Event</span>
-                                <span class="news-date">15. Dezember 2025</span>
+                                <span class="news-badge event" data-de="Event">Event</span>
+                                <span class="news-date" data-de="15. Dezember 2025">December 15, 2025</span>
                             </div>
                             <div class="news-image">🏃</div>
-                            <h3>Neuer Wellpass-Standort in Heidenheim</h3>
-                            <p>Ab Januar 2026 könnt ihr zusätzlich das neu eröffnete "FitActive Premium" in der Innenstadt nutzen. Modernste Geräte und Kurse warten auf euch!</p>
-                            <button class="btn-secondary">Mehr erfahren</button>
+                            <h3 data-de="Neuer Wellpass-Standort in Heidenheim">New Wellpass location in Heidenheim</h3>
+                            <p data-de="Ab Januar 2026 könnt ihr zusätzlich das neu eröffnete &quot;FitActive Premium&quot; in der Innenstadt nutzen. Modernste Geräte und Kurse warten auf euch!">From January 2026, you can additionally use the newly opened "FitActive Premium" downtown. State-of-the-art equipment and classes are waiting for you!</p>
+                            <button class="btn-secondary" data-de="Mehr erfahren">Learn more</button>
                         </article>
 
                         <article class="news-card">
                             <div class="news-header">
-                                <span class="news-badge hr">HR-News</span>
-                                <span class="news-date">10. Dezember 2025</span>
+                                <span class="news-badge hr" data-de="HR-News">HR News</span>
+                                <span class="news-date" data-de="10. Dezember 2025">December 10, 2025</span>
                             </div>
                             <div class="news-image">📊</div>
-                            <h3>Mitarbeitergespräche Q1 2026</h3>
-                            <p>Die Jahresgespräche für 2026 finden im Januar und Februar statt. Bitte vereinbart frühzeitig Termine mit euren Vorgesetzten. Vorbereitungsunterlagen findet ihr im HR-Portal.</p>
-                            <button class="btn-secondary">Zum Portal</button>
+                            <h3 data-de="Mitarbeitergespräche Q1 2026">Performance Reviews Q1 2026</h3>
+                            <p data-de="Die Jahresgespräche für 2026 finden im Januar und Februar statt. Bitte vereinbart frühzeitig Termine mit euren Vorgesetzten. Vorbereitungsunterlagen findet ihr im HR-Portal.">The annual reviews for 2026 will take place in January and February. Please arrange appointments with your supervisors early. Preparation documents can be found in the HR portal.</p>
+                            <button class="btn-secondary" data-de="Zum Portal">Go to Portal</button>
                         </article>
 
                         <article class="news-card">
                             <div class="news-header">
-                                <span class="news-badge event">After Work</span>
-                                <span class="news-date">5. Dezember 2025</span>
+                                <span class="news-badge event" data-de="After Work">After Work</span>
+                                <span class="news-date" data-de="5. Dezember 2025">December 5, 2025</span>
                             </div>
                             <div class="news-image">🍺</div>
-                            <h3>After Work Stammtisch - Januar Termine</h3>
-                            <p>Unser monatlicher After Work Stammtisch geht weiter! Im Januar treffen wir uns jeden ersten und dritten Donnerstag ab 18:00 Uhr im "Brauhaus am Markt".</p>
-                            <button class="btn-secondary">Zusagen</button>
+                            <h3 data-de="After Work Stammtisch - Januar Termine">After Work Pub Meetup - January Dates</h3>
+                            <p data-de="Unser monatlicher After Work Stammtisch geht weiter! Im Januar treffen wir uns jeden ersten und dritten Donnerstag ab 18:00 Uhr im &quot;Brauhaus am Markt&quot;.">Our monthly after-work meetup continues! In January, we will meet every first and third Thursday from 6:00 PM at "Brauhaus am Markt".</p>
+                            <button class="btn-secondary" data-de="Zusagen">Attend</button>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <!-- Salary Section -->
             <section class="content-section" id="salary">
                 <div class="content">
-                    <h2>Gehaltsübersicht</h2>
-                    <p>Deine Vergütung transparent dargestellt</p>
+                    <h2 data-de="Gehaltsübersicht">Salary Overview</h2>
+                    <p data-de="Deine Vergütung transparent dargestellt">Your compensation presented transparently</p>
 
                     <div class="salary-summary">
                         <div class="salary-card primary">
-                            <h3>Brutto-Jahresgehalt</h3>
+                            <h3 data-de="Brutto-Jahresgehalt">Gross Annual Salary</h3>
                             <div class="salary-amount">52.000€</div>
                         </div>
                         <div class="salary-card">
-                            <h3>Benefits-Wert (genutzt)</h3>
+                            <h3 data-de="Benefits-Wert (genutzt)">Benefits Value (used)</h3>
                             <div class="salary-amount">8.450€</div>
                         </div>
                         <div class="salary-card highlight">
-                            <h3>Total Rewards</h3>
+                            <h3 data-de="Total Rewards">Total Rewards</h3>
                             <div class="salary-amount">60.450€</div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Monatliche Abrechnung (Dezember 2025)</h3>
+                    <h3 class="section-title" data-de="Monatliche Abrechnung (Dezember 2025)">Monthly Statement (December 2025)</h3>
                     <div class="salary-details">
                         <div class="salary-row">
-                            <span>Grundgehalt</span>
+                            <span data-de="Grundgehalt">Base Salary</span>
                             <span>4.333,33€</span>
                         </div>
                         <div class="salary-row">
-                            <span>Weihnachtsgeld (anteilig)</span>
+                            <span data-de="Weihnachtsgeld (anteilig)">Christmas Bonus (pro rata)</span>
                             <span>+500,00€</span>
                         </div>
                         <div class="salary-row total">
-                            <span><strong>Brutto gesamt</strong></span>
+                            <span data-de="<strong>Brutto gesamt</strong>"><strong>Total Gross</strong></span>
                             <span><strong>4.833,33€</strong></span>
                         </div>
                         <div class="salary-row deduction">
-                            <span>Lohnsteuer</span>
+                            <span data-de="Lohnsteuer">Income Tax</span>
                             <span>-890,00€</span>
                         </div>
                         <div class="salary-row deduction">
-                            <span>Sozialversicherung</span>
+                            <span data-de="Sozialversicherung">Social Security</span>
                             <span>-968,67€</span>
                         </div>
                         <div class="salary-row net">
-                            <span><strong>Netto-Auszahlung</strong></span>
+                            <span data-de="<strong>Netto-Auszahlung</strong>"><strong>Net Payout</strong></span>
                             <span><strong>2.974,66€</strong></span>
                         </div>
                     </div>
 
                     <div class="salary-documents">
-                        <h3 class="section-title">Gehaltsabrechnungen</h3>
+                        <h3 class="section-title" data-de="Gehaltsabrechnungen">Payslips</h3>
                         <div class="document-list">
                             <div class="document-item">
-                                <span>📄 Dezember 2025</span>
-                                <button class="btn-secondary">Download</button>
+                                <span data-de="📄 Dezember 2025">📄 December 2025</span>
+                                <button class="btn-secondary" data-de="Download">Download</button>
                             </div>
                             <div class="document-item">
-                                <span>📄 November 2025</span>
-                                <button class="btn-secondary">Download</button>
+                                <span data-de="📄 November 2025">📄 November 2025</span>
+                                <button class="btn-secondary" data-de="Download">Download</button>
                             </div>
                             <div class="document-item">
-                                <span>📄 Oktober 2025</span>
-                                <button class="btn-secondary">Download</button>
+                                <span data-de="📄 Oktober 2025">📄 October 2025</span>
+                                <button class="btn-secondary" data-de="Download">Download</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Time Management Section -->
             <section class="content-section" id="time">
                 <div class="content">
-                    <h2>Zeiterfassung</h2>
-                    <p>Deine Arbeitszeiten im Überblick</p>
+                    <h2 data-de="Zeiterfassung">Time Tracking</h2>
+                    <p data-de="Deine Arbeitszeiten im Überblick">Overview of your working hours</p>
 
                     <div class="time-summary">
                         <div class="time-card">
-                            <div class="time-label">Heute</div>
-                            <div class="time-value">7:45 Std</div>
-                            <div class="time-status">In Arbeit</div>
+                            <div class="time-label" data-de="Heute">Today</div>
+                            <div class="time-value" data-de="7:45 Std">7:45 hrs</div>
+                            <div class="time-status" data-de="In Arbeit">Working</div>
                         </div>
                         <div class="time-card">
-                            <div class="time-label">Diese Woche</div>
-                            <div class="time-value">32:15 Std</div>
-                            <div class="time-status">von 40:00 Std</div>
+                            <div class="time-label" data-de="Diese Woche">This Week</div>
+                            <div class="time-value" data-de="32:15 Std">32:15 hrs</div>
+                            <div class="time-status" data-de="von 40:00 Std">of 40:00 hrs</div>
                         </div>
                         <div class="time-card">
-                            <div class="time-label">Dieser Monat</div>
-                            <div class="time-value">156:30 Std</div>
-                            <div class="time-status">Target: 160:00 Std</div>
+                            <div class="time-label" data-de="Dieser Monat">This Month</div>
+                            <div class="time-value" data-de="156:30 Std">156:30 hrs</div>
+                            <div class="time-status" data-de="Target: 160:00 Std">Target: 160:00 hrs</div>
                         </div>
                         <div class="time-card">
-                            <div class="time-label">Überstunden</div>
-                            <div class="time-value">+12:30 Std</div>
-                            <div class="time-status">Akkumuliert</div>
+                            <div class="time-label" data-de="Überstunden">Overtime</div>
+                            <div class="time-value" data-de="+12:30 Std">+12:30 hrs</div>
+                            <div class="time-status" data-de="Akkumuliert">Accumulated</div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Aktuelle Woche (KW 51)</h3>
+                    <h3 class="section-title" data-de="Aktuelle Woche (KW 51)">Current Week (CW 51)</h3>
                     <div class="time-tracking">
                         <div class="time-entry">
-                            <div class="day">Mo, 16.12.</div>
-                            <div class="hours">8:00 Std</div>
+                            <div class="day" data-de="Mo, 16.12.">Mon, Dec 16</div>
+                            <div class="hours" data-de="8:00 Std">8:00 hrs</div>
                             <div class="times">08:00 - 17:00</div>
                         </div>
                         <div class="time-entry">
-                            <div class="day">Di, 17.12.</div>
-                            <div class="hours">8:15 Std</div>
+                            <div class="day" data-de="Di, 17.12.">Tue, Dec 17</div>
+                            <div class="hours" data-de="8:15 Std">8:15 hrs</div>
                             <div class="times">07:45 - 17:00</div>
                         </div>
                         <div class="time-entry">
-                            <div class="day">Mi, 18.12.</div>
-                            <div class="hours">8:00 Std</div>
+                            <div class="day" data-de="Mi, 18.12.">Wed, Dec 18</div>
+                            <div class="hours" data-de="8:00 Std">8:00 hrs</div>
                             <div class="times">08:00 - 17:00</div>
                         </div>
                         <div class="time-entry">
-                            <div class="day">Do, 19.12.</div>
-                            <div class="hours">8:00 Std</div>
+                            <div class="day" data-de="Do, 19.12.">Thu, Dec 19</div>
+                            <div class="hours" data-de="8:00 Std">8:00 hrs</div>
                             <div class="times">08:00 - 17:00</div>
                         </div>
                         <div class="time-entry current">
-                            <div class="day">Fr, 20.12.</div>
-                            <div class="hours">7:45 Std</div>
-                            <div class="times">08:15 - laufend</div>
+                            <div class="day" data-de="Fr, 20.12.">Fri, Dec 20</div>
+                            <div class="hours" data-de="7:45 Std">7:45 hrs</div>
+                            <div class="times" data-de="08:15 - laufend">08:15 - ongoing</div>
                         </div>
                     </div>
 
                     <div class="time-actions">
-                        <button class="btn-primary">Stempeln</button>
-                        <button class="btn-secondary">Korrektur beantragen</button>
+                        <button class="btn-primary" data-de="Stempeln">Clock In/Out</button>
+                        <button class="btn-secondary" data-de="Korrektur beantragen">Request Correction</button>
                     </div>
                 </div>
             </section>
 
-            <!-- Vacation Planner Section -->
             <section class="content-section" id="vacation">
                 <div class="content">
-                    <h2>Urlaubsplaner</h2>
-                    <p>Plane und verwalte deinen Urlaub</p>
+                    <h2 data-de="Urlaubsplaner">Vacation Planner</h2>
+                    <p data-de="Plane und verwalte deinen Urlaub">Plan and manage your vacation</p>
 
                     <div class="vacation-summary">
                         <div class="vacation-card">
                             <div class="vacation-icon">🏖️</div>
                             <div class="vacation-info">
-                                <div class="vacation-value">18 Tage</div>
-                                <div class="vacation-label">Verfügbar</div>
+                                <div class="vacation-value" data-de="18 Tage">18 Days</div>
+                                <div class="vacation-label" data-de="Verfügbar">Available</div>
                             </div>
                         </div>
                         <div class="vacation-card">
                             <div class="vacation-icon">✅</div>
                             <div class="vacation-info">
-                                <div class="vacation-value">8 Tage</div>
-                                <div class="vacation-label">Genommen</div>
+                                <div class="vacation-value" data-de="8 Tage">8 Days</div>
+                                <div class="vacation-label" data-de="Genommen">Taken</div>
                             </div>
                         </div>
                         <div class="vacation-card">
                             <div class="vacation-icon">📅</div>
                             <div class="vacation-info">
-                                <div class="vacation-value">4 Tage</div>
-                                <div class="vacation-label">Geplant</div>
+                                <div class="vacation-value" data-de="4 Tage">4 Days</div>
+                                <div class="vacation-label" data-de="Geplant">Planned</div>
                             </div>
                         </div>
                         <div class="vacation-card total">
                             <div class="vacation-icon">📊</div>
                             <div class="vacation-info">
-                                <div class="vacation-value">30 Tage</div>
-                                <div class="vacation-label">Jahresanspruch</div>
+                                <div class="vacation-value" data-de="30 Tage">30 Days</div>
+                                <div class="vacation-label" data-de="Jahresanspruch">Annual Entitlement</div>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Geplante Abwesenheiten</h3>
+                    <h3 class="section-title" data-de="Geplante Abwesenheiten">Planned Absences</h3>
                     <div class="vacation-list">
                         <div class="vacation-entry approved">
                             <div class="vacation-dates">
                                 <div class="date-badge">27.12.25 - 31.12.25</div>
-                                <div class="vacation-days">5 Tage</div>
+                                <div class="vacation-days" data-de="5 Tage">5 Days</div>
                             </div>
                             <div class="vacation-status">
-                                <span class="status-badge approved">Genehmigt</span>
+                                <span class="status-badge approved" data-de="Genehmigt">Approved</span>
                             </div>
                         </div>
 
                         <div class="vacation-entry pending">
                             <div class="vacation-dates">
                                 <div class="date-badge">14.02.26 - 16.02.26</div>
-                                <div class="vacation-days">3 Tage (Brückentage)</div>
+                                <div class="vacation-days" data-de="3 Tage (Brückentage)">3 Days (Bridge days)</div>
                             </div>
                             <div class="vacation-status">
-                                <span class="status-badge pending">Ausstehend</span>
+                                <span class="status-badge pending" data-de="Ausstehend">Pending</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="vacation-calendar">
-                        <h3 class="section-title">Beliebte Brückentage 2026</h3>
+                        <h3 class="section-title" data-de="Beliebte Brückentage 2026">Popular Bridge Days 2026</h3>
                         <div class="bridge-days">
                             <div class="bridge-day">
-                                <span>🌉 Karneval: 16.02. (Mo) + 17.02. (Di)</span>
-                                <button class="btn-secondary">Planen</button>
+                                <span data-de="🌉 Karneval: 16.02. (Mo) + 17.02. (Di)">🌉 Carnival: Feb 16 (Mon) + Feb 17 (Tue)</span>
+                                <button class="btn-secondary" data-de="Planen">Plan</button>
                             </div>
                             <div class="bridge-day">
-                                <span>🌉 Ostern: 14.04. (Di) + 15.04. (Mi)</span>
-                                <button class="btn-secondary">Planen</button>
+                                <span data-de="🌉 Ostern: 14.04. (Di) + 15.04. (Mi)">🌉 Easter: Apr 14 (Tue) + Apr 15 (Wed)</span>
+                                <button class="btn-secondary" data-de="Planen">Plan</button>
                             </div>
                             <div class="bridge-day">
-                                <span>🌉 Himmelfahrt: 15.05. (Fr)</span>
-                                <button class="btn-secondary">Planen</button>
+                                <span data-de="🌉 Himmelfahrt: 15.05. (Fr)">🌉 Ascension: May 15 (Fri)</span>
+                                <button class="btn-secondary" data-de="Planen">Plan</button>
                             </div>
                         </div>
                     </div>
 
-                    <button class="btn-primary">Neuen Urlaub beantragen</button>
+                    <button class="btn-primary" data-de="Neuen Urlaub beantragen">Request New Vacation</button>
                 </div>
             </section>
 
-            <!-- Social Hub Section -->
             <section class="content-section" id="social">
                 <div class="content">
-                    <h2>Social Hub</h2>
-                    <p>Vernetze dich mit Kollegen und entdecke After-Work Events</p>
+                    <h2 data-de="Social Hub">Social Hub</h2>
+                    <p data-de="Vernetze dich mit Kollegen und entdecke After-Work Events">Connect with colleagues and discover after-work events</p>
 
                     <div class="social-featured">
                         <div class="event-card featured">
-                            <div class="event-badge">Nächstes Event</div>
+                            <div class="event-badge" data-de="Nächstes Event">Next Event</div>
                             <div class="event-image">🎳</div>
-                            <h3>Bowling Night</h3>
+                            <h3 data-de="Bowling Night">Bowling Night</h3>
                             <div class="event-details">
-                                <p><strong>📅 Datum:</strong> Freitag, 10. Januar 2026</p>
-                                <p><strong>🕖 Uhrzeit:</strong> 19:00 Uhr</p>
-                                <p><strong>📍 Ort:</strong> Bowling Center Heidenheim</p>
-                                <p><strong>👥 Teilnehmer:</strong> 12 / 20</p>
+                                <p data-de="<strong>📅 Datum:</strong> Freitag, 10. Januar 2026"><strong>📅 Date:</strong> Friday, January 10, 2026</p>
+                                <p data-de="<strong>🕖 Uhrzeit:</strong> 19:00 Uhr"><strong>🕖 Time:</strong> 7:00 PM</p>
+                                <p data-de="<strong>📍 Ort:</strong> Bowling Center Heidenheim"><strong>📍 Location:</strong> Bowling Center Heidenheim</p>
+                                <p data-de="<strong>👥 Teilnehmer:</strong> 12 / 20"><strong>👥 Participants:</strong> 12 / 20</p>
                             </div>
-                            <button class="btn-primary">Teilnehmen</button>
+                            <button class="btn-primary" data-de="Teilnehmen">Join</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Kommende Events</h3>
+                    <h3 class="section-title" data-de="Kommende Events">Upcoming Events</h3>
                     <div class="events-list">
                         <div class="event-item">
                             <div class="event-icon">🍺</div>
                             <div class="event-info">
-                                <h4>After Work Stammtisch</h4>
-                                <p>Do, 16. Januar - 18:00 Uhr | Brauhaus am Markt</p>
-                                <span class="participant-count">8 Teilnehmer</span>
+                                <h4 data-de="After Work Stammtisch">After Work Pub Meetup</h4>
+                                <p data-de="Do, 16. Januar - 18:00 Uhr | Brauhaus am Markt">Thu, Jan 16 - 6:00 PM | Brauhaus am Markt</p>
+                                <span class="participant-count" data-de="8 Teilnehmer">8 Participants</span>
                             </div>
-                            <button class="btn-secondary">Dabei sein</button>
+                            <button class="btn-secondary" data-de="Dabei sein">Attend</button>
                         </div>
 
                         <div class="event-item">
                             <div class="event-icon">⚽</div>
                             <div class="event-info">
-                                <h4>Fußball-Stammtisch</h4>
-                                <p>Di, 21. Januar - 19:30 Uhr | Sportheim TSV</p>
-                                <span class="participant-count">14 Teilnehmer</span>
+                                <h4 data-de="Fußball-Stammtisch">Football Meetup</h4>
+                                <p data-de="Di, 21. Januar - 19:30 Uhr | Sportheim TSV">Tue, Jan 21 - 7:30 PM | Sportheim TSV</p>
+                                <span class="participant-count" data-de="14 Teilnehmer">14 Participants</span>
                             </div>
-                            <button class="btn-secondary">Dabei sein</button>
+                            <button class="btn-secondary" data-de="Dabei sein">Attend</button>
                         </div>
 
                         <div class="event-item">
                             <div class="event-icon">🎮</div>
                             <div class="event-info">
-                                <h4>Gaming Night</h4>
-                                <p>Fr, 24. Januar - 20:00 Uhr | Online (Discord)</p>
-                                <span class="participant-count">6 Teilnehmer</span>
+                                <h4 data-de="Gaming Night">Gaming Night</h4>
+                                <p data-de="Fr, 24. Januar - 20:00 Uhr | Online (Discord)">Fri, Jan 24 - 8:00 PM | Online (Discord)</p>
+                                <span class="participant-count" data-de="6 Teilnehmer">6 Participants</span>
                             </div>
-                            <button class="btn-secondary">Dabei sein</button>
+                            <button class="btn-secondary" data-de="Dabei sein">Attend</button>
                         </div>
 
                         <div class="event-item">
                             <div class="event-icon">🎿</div>
                             <div class="event-info">
-                                <h4>Ski-Wochenende</h4>
-                                <p>Sa-So, 1.-2. Februar | Oberstdorf</p>
-                                <span class="participant-count">18 Teilnehmer</span>
+                                <h4 data-de="Ski-Wochenende">Ski Weekend</h4>
+                                <p data-de="Sa-So, 1.-2. Februar | Oberstdorf">Sat-Sun, Feb 1-2 | Oberstdorf</p>
+                                <span class="participant-count" data-de="18 Teilnehmer">18 Participants</span>
                             </div>
-                            <button class="btn-secondary">Dabei sein</button>
+                            <button class="btn-secondary" data-de="Dabei sein">Attend</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Interesse-Gruppen</h3>
+                    <h3 class="section-title" data-de="Interesse-Gruppen">Interest Groups</h3>
                     <div class="groups-list">
                         <div class="group-card">
                             <div class="group-icon">🏃</div>
                             <div class="group-info">
-                                <h4>Lauftreff</h4>
-                                <p>23 Mitglieder</p>
+                                <h4 data-de="Lauftreff">Running Group</h4>
+                                <p data-de="23 Mitglieder">23 Members</p>
                             </div>
-                            <button class="btn-secondary">Beitreten</button>
+                            <button class="btn-secondary" data-de="Beitreten">Join</button>
                         </div>
 
                         <div class="group-card">
                             <div class="group-icon">📚</div>
                             <div class="group-info">
-                                <h4>Buchclub</h4>
-                                <p>15 Mitglieder</p>
+                                <h4 data-de="Buchclub">Book Club</h4>
+                                <p data-de="15 Mitglieder">15 Members</p>
                             </div>
-                            <button class="btn-secondary">Beitreten</button>
+                            <button class="btn-secondary" data-de="Beitreten">Join</button>
                         </div>
 
                         <div class="group-card">
                             <div class="group-icon">🎸</div>
                             <div class="group-info">
-                                <h4>Band/Musik</h4>
-                                <p>9 Mitglieder</p>
+                                <h4 data-de="Band/Musik">Band/Music</h4>
+                                <p data-de="9 Mitglieder">9 Members</p>
                             </div>
-                            <button class="btn-secondary">Beitreten</button>
+                            <button class="btn-secondary" data-de="Beitreten">Join</button>
                         </div>
 
                         <div class="group-card">
                             <div class="group-icon">🚴</div>
                             <div class="group-info">
-                                <h4>Bike-Touren</h4>
-                                <p>31 Mitglieder</p>
+                                <h4 data-de="Bike-Touren">Bike Tours</h4>
+                                <p data-de="31 Mitglieder">31 Members</p>
                             </div>
-                            <button class="btn-secondary">Beitreten</button>
+                            <button class="btn-secondary" data-de="Beitreten">Join</button>
                         </div>
                     </div>
 
-                    <button class="btn-primary">Event erstellen</button>
+                    <button class="btn-primary" data-de="Event erstellen">Create Event</button>
                 </div>
             </section>
 
-            <!-- Onboarding & Training Section -->
             <section class="content-section" id="onboarding">
                 <div class="content">
-                    <h2>Einarbeitung & Training</h2>
-                    <p>Deine personalisierte Lernplattform für erfolgreiche Einarbeitung und kontinuierliche Weiterbildung</p>
+                    <h2 data-de="Einarbeitung & Training">Onboarding & Training</h2>
+                    <p data-de="Deine personalisierte Lernplattform für erfolgreiche Einarbeitung und kontinuierliche Weiterbildung">Your personalized learning platform for successful onboarding and continuous education</p>
 
                     <div class="onboarding-progress">
                         <div class="progress-card">
-                            <h3>Dein Fortschritt</h3>
+                            <h3 data-de="Dein Fortschritt">Your Progress</h3>
                             <div class="progress-bar-container">
                                 <div class="progress-bar" style="width: 65%"></div>
                             </div>
                             <div class="progress-stats">
-                                <span>65% abgeschlossen</span>
-                                <span>🏆 Level 3</span>
+                                <span data-de="65% abgeschlossen">65% completed</span>
+                                <span data-de="🏆 Level 3">🏆 Level 3</span>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Onboarding-Guides</h3>
+                    <h3 class="section-title" data-de="Onboarding-Guides">Onboarding Guides</h3>
                     <div class="training-list">
                         <div class="training-card completed">
                             <div class="training-icon">✅</div>
                             <div class="training-info">
-                                <h4>Willkommen bei Artivion</h4>
-                                <p>Unternehmenskultur, Vision und Mission</p>
+                                <h4 data-de="Willkommen bei Artivion">Welcome to Artivion</h4>
+                                <p data-de="Unternehmenskultur, Vision und Mission">Corporate culture, vision and mission</p>
                                 <div class="training-meta">
-                                    <span>📚 5 Module</span>
-                                    <span>⏱️ 45 Min</span>
-                                    <span class="score">Quiz: 90%</span>
+                                    <span data-de="📚 5 Module">📚 5 Modules</span>
+                                    <span data-de="⏱️ 45 Min">⏱️ 45 Min</span>
+                                    <span class="score" data-de="Quiz: 90%">Quiz: 90%</span>
                                 </div>
                             </div>
-                            <button class="btn-secondary">Wiederholen</button>
+                            <button class="btn-secondary" data-de="Wiederholen">Repeat</button>
                         </div>
 
                         <div class="training-card completed">
                             <div class="training-icon">✅</div>
                             <div class="training-info">
-                                <h4>IT-Systeme & Tools</h4>
-                                <p>Einführung in unsere Arbeitsumgebung</p>
+                                <h4 data-de="IT-Systeme & Tools">IT Systems & Tools</h4>
+                                <p data-de="Einführung in unsere Arbeitsumgebung">Introduction to our work environment</p>
                                 <div class="training-meta">
-                                    <span>📚 8 Module</span>
-                                    <span>⏱️ 60 Min</span>
-                                    <span class="score">Quiz: 85%</span>
+                                    <span data-de="📚 8 Module">📚 8 Modules</span>
+                                    <span data-de="⏱️ 60 Min">⏱️ 60 Min</span>
+                                    <span class="score" data-de="Quiz: 85%">Quiz: 85%</span>
                                 </div>
                             </div>
-                            <button class="btn-secondary">Wiederholen</button>
+                            <button class="btn-secondary" data-de="Wiederholen">Repeat</button>
                         </div>
 
                         <div class="training-card in-progress">
                             <div class="training-icon">📖</div>
                             <div class="training-info">
-                                <h4>Compliance & Qualität</h4>
-                                <p>Medizinprodukte-Regulierung und Qualitätsstandards</p>
+                                <h4 data-de="Compliance & Qualität">Compliance & Quality</h4>
+                                <p data-de="Medizinprodukte-Regulierung und Qualitätsstandards">Medical device regulation and quality standards</p>
                                 <div class="training-meta">
-                                    <span>📚 6 Module</span>
-                                    <span>⏱️ 90 Min</span>
-                                    <span class="progress-indicator">50% abgeschlossen</span>
+                                    <span data-de="📚 6 Module">📚 6 Modules</span>
+                                    <span data-de="⏱️ 90 Min">⏱️ 90 Min</span>
+                                    <span class="progress-indicator" data-de="50% abgeschlossen">50% completed</span>
                                 </div>
                             </div>
-                            <button class="btn-primary">Fortsetzen</button>
+                            <button class="btn-primary" data-de="Fortsetzen">Continue</button>
                         </div>
 
                         <div class="training-card">
                             <div class="training-icon">🔒</div>
                             <div class="training-info">
-                                <h4>Produktschulung Kardiovaskulär</h4>
-                                <p>Detaillierte Einführung in unser Produktportfolio</p>
+                                <h4 data-de="Produktschulung Kardiovaskulär">Product Training Cardiovascular</h4>
+                                <p data-de="Detaillierte Einführung in unser Produktportfolio">Detailed introduction to our product portfolio</p>
                                 <div class="training-meta">
-                                    <span>📚 10 Module</span>
-                                    <span>⏱️ 120 Min</span>
-                                    <span class="locked">Verfügbar ab Level 4</span>
+                                    <span data-de="📚 10 Module">📚 10 Modules</span>
+                                    <span data-de="⏱️ 120 Min">⏱️ 120 Min</span>
+                                    <span class="locked" data-de="Verfügbar ab Level 4">Available from Level 4</span>
                                 </div>
                             </div>
-                            <button class="btn-secondary" disabled>Gesperrt</button>
+                            <button class="btn-secondary" disabled data-de="Gesperrt">Locked</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Interaktive Quizze</h3>
+                    <h3 class="section-title" data-de="Interaktive Quizze">Interactive Quizzes</h3>
                     <div class="quiz-list">
                         <div class="quiz-card featured">
-                            <div class="quiz-badge">Empfohlen</div>
+                            <div class="quiz-badge" data-de="Empfohlen">Recommended</div>
                             <div class="quiz-icon">🎯</div>
-                            <h4>Wöchentliche Challenge: Produktwissen</h4>
-                            <p>Teste dein Wissen über unsere Herzklappen-Produkte</p>
+                            <h4 data-de="Wöchentliche Challenge: Produktwissen">Weekly Challenge: Product Knowledge</h4>
+                            <p data-de="Teste dein Wissen über unsere Herzklappen-Produkte">Test your knowledge about our heart valve products</p>
                             <div class="quiz-stats">
-                                <span>10 Fragen</span>
-                                <span>⏱️ 15 Min</span>
-                                <span>🏅 50 Punkte</span>
+                                <span data-de="10 Fragen">10 Questions</span>
+                                <span data-de="⏱️ 15 Min">⏱️ 15 Min</span>
+                                <span data-de="🏅 50 Punkte">🏅 50 Points</span>
                             </div>
-                            <button class="btn-primary">Quiz starten</button>
+                            <button class="btn-primary" data-de="Quiz starten">Start Quiz</button>
                         </div>
 
                         <div class="quiz-card">
                             <div class="quiz-icon">💡</div>
-                            <h4>Compliance Quick Check</h4>
-                            <p>Überprüfe dein Compliance-Wissen</p>
+                            <h4 data-de="Compliance Quick Check">Compliance Quick Check</h4>
+                            <p data-de="Überprüfe dein Compliance-Wissen">Check your compliance knowledge</p>
                             <div class="quiz-stats">
-                                <span>5 Fragen</span>
-                                <span>⏱️ 5 Min</span>
-                                <span>🏅 25 Punkte</span>
+                                <span data-de="5 Fragen">5 Questions</span>
+                                <span data-de="⏱️ 5 Min">⏱️ 5 Min</span>
+                                <span data-de="🏅 25 Punkte">🏅 25 Points</span>
                             </div>
-                            <button class="btn-secondary">Starten</button>
+                            <button class="btn-secondary" data-de="Starten">Start</button>
                         </div>
                     </div>
 
                     <div class="gamification-section">
-                        <h3 class="section-title">Deine Erfolge</h3>
+                        <h3 class="section-title" data-de="Deine Erfolge">Your Achievements</h3>
                         <div class="achievements">
                             <div class="achievement earned">
                                 <div class="achievement-icon">🌟</div>
-                                <div class="achievement-label">Schnellstarter</div>
+                                <div class="achievement-label" data-de="Schnellstarter">Fast Starter</div>
                             </div>
                             <div class="achievement earned">
                                 <div class="achievement-icon">📚</div>
-                                <div class="achievement-label">Wissensdurstig</div>
+                                <div class="achievement-label" data-de="Wissensdurstig">Thirsty for Knowledge</div>
                             </div>
                             <div class="achievement earned">
                                 <div class="achievement-icon">🎯</div>
-                                <div class="achievement-label">Quiz-Meister</div>
+                                <div class="achievement-label" data-de="Quiz-Meister">Quiz Master</div>
                             </div>
                             <div class="achievement locked">
                                 <div class="achievement-icon">🏆</div>
-                                <div class="achievement-label">Experte</div>
+                                <div class="achievement-label" data-de="Experte">Expert</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Tasks & Notifications Section -->
             <section class="content-section" id="tasks">
                 <div class="content">
-                    <h2>Aufgaben & Benachrichtigungen</h2>
-                    <p>Behalte den Überblick über alle wichtigen Aufgaben, Deadlines und Erinnerungen</p>
+                    <h2 data-de="Aufgaben & Benachrichtigungen">Tasks & Notifications</h2>
+                    <p data-de="Behalte den Überblick über alle wichtigen Aufgaben, Deadlines und Erinnerungen">Keep track of all important tasks, deadlines and reminders</p>
 
                     <div class="tasks-summary">
                         <div class="task-stat urgent">
                             <div class="stat-number">3</div>
-                            <div class="stat-label">Dringend</div>
+                            <div class="stat-label" data-de="Dringend">Urgent</div>
                         </div>
                         <div class="task-stat pending">
                             <div class="stat-number">8</div>
-                            <div class="stat-label">Ausstehend</div>
+                            <div class="stat-label" data-de="Ausstehend">Pending</div>
                         </div>
                         <div class="task-stat completed">
                             <div class="stat-number">47</div>
-                            <div class="stat-label">Erledigt</div>
+                            <div class="stat-label" data-de="Erledigt">Completed</div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Dringende Aufgaben</h3>
+                    <h3 class="section-title" data-de="Dringende Aufgaben">Urgent Tasks</h3>
                     <div class="tasks-list">
                         <div class="task-item urgent">
                             <div class="task-priority">🔴</div>
                             <div class="task-content">
-                                <h4>Jahresgespräch vorbereiten</h4>
-                                <p>Zielvereinbarung und Selbsteinschätzung ausfüllen</p>
+                                <h4 data-de="Jahresgespräch vorbereiten">Prepare Annual Review</h4>
+                                <p data-de="Zielvereinbarung und Selbsteinschätzung ausfüllen">Fill out target agreement and self-assessment</p>
                                 <div class="task-meta">
-                                    <span class="deadline">⏰ Fällig: 22.12.2025</span>
-                                    <span class="category">📋 HR</span>
+                                    <span class="deadline" data-de="⏰ Fällig: 22.12.2025">⏰ Due: Dec 22, 2025</span>
+                                    <span class="category" data-de="📋 HR">📋 HR</span>
                                 </div>
                             </div>
-                            <button class="btn-primary">Erledigen</button>
+                            <button class="btn-primary" data-de="Erledigen">Complete</button>
                         </div>
 
                         <div class="task-item urgent">
                             <div class="task-priority">🔴</div>
                             <div class="task-content">
-                                <h4>Compliance-Training abschließen</h4>
-                                <p>Pflichtschulung muss bis Jahresende abgeschlossen sein</p>
+                                <h4 data-de="Compliance-Training abschließen">Complete Compliance Training</h4>
+                                <p data-de="Pflichtschulung muss bis Jahresende abgeschlossen sein">Mandatory training must be completed by year-end</p>
                                 <div class="task-meta">
-                                    <span class="deadline">⏰ Fällig: 31.12.2025</span>
-                                    <span class="category">🎓 Training</span>
+                                    <span class="deadline" data-de="⏰ Fällig: 31.12.2025">⏰ Due: Dec 31, 2025</span>
+                                    <span class="category" data-de="🎓 Training">🎓 Training</span>
                                 </div>
                             </div>
-                            <button class="btn-primary">Fortsetzen</button>
+                            <button class="btn-primary" data-de="Fortsetzen">Continue</button>
                         </div>
 
                         <div class="task-item urgent">
                             <div class="task-priority">🟡</div>
                             <div class="task-content">
-                                <h4>Urlaubsantrag genehmigen</h4>
-                                <p>Antrag von Max Mustermann prüfen</p>
+                                <h4 data-de="Urlaubsantrag genehmigen">Approve Vacation Request</h4>
+                                <p data-de="Antrag von Max Mustermann prüfen">Check request from Max Mustermann</p>
                                 <div class="task-meta">
-                                    <span class="deadline">⏰ Fällig: 23.12.2025</span>
-                                    <span class="category">👥 Team</span>
+                                    <span class="deadline" data-de="⏰ Fällig: 23.12.2025">⏰ Due: Dec 23, 2025</span>
+                                    <span class="category" data-de="👥 Team">👥 Team</span>
                                 </div>
                             </div>
-                            <button class="btn-primary">Ansehen</button>
+                            <button class="btn-primary" data-de="Ansehen">View</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Kommende Termine</h3>
+                    <h3 class="section-title" data-de="Kommende Termine">Upcoming Appointments</h3>
                     <div class="appointments-list">
                         <div class="appointment-item">
                             <div class="appointment-time">
                                 <div class="time">14:00</div>
-                                <div class="date">Heute</div>
+                                <div class="date" data-de="Heute">Today</div>
                             </div>
                             <div class="appointment-info">
-                                <h4>Team Meeting</h4>
-                                <p>📍 Raum A.2.15 | 👥 8 Teilnehmer</p>
+                                <h4 data-de="Team Meeting">Team Meeting</h4>
+                                <p data-de="📍 Raum A.2.15 | 👥 8 Teilnehmer">📍 Room A.2.15 | 👥 8 Participants</p>
                             </div>
-                            <button class="btn-secondary">Details</button>
+                            <button class="btn-secondary" data-de="Details">Details</button>
                         </div>
 
                         <div class="appointment-item">
                             <div class="appointment-time">
                                 <div class="time">10:00</div>
-                                <div class="date">Mo, 23.12</div>
+                                <div class="date" data-de="Mo, 23.12">Mon, Dec 23</div>
                             </div>
                             <div class="appointment-info">
-                                <h4>Projektbesprechung Q1/2026</h4>
-                                <p>📍 Online (Teams) | 👥 12 Teilnehmer</p>
+                                <h4 data-de="Projektbesprechung Q1/2026">Project Meeting Q1/2026</h4>
+                                <p data-de="📍 Online (Teams) | 👥 12 Teilnehmer">📍 Online (Teams) | 👥 12 Participants</p>
                             </div>
-                            <button class="btn-secondary">Details</button>
+                            <button class="btn-secondary" data-de="Details">Details</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Benachrichtigungen</h3>
+                    <h3 class="section-title" data-de="Benachrichtigungen">Notifications</h3>
                     <div class="notifications-list">
                         <div class="notification-item unread">
                             <div class="notification-icon">💰</div>
                             <div class="notification-content">
-                                <h4>Gehaltsabrechnung verfügbar</h4>
-                                <p>Deine Dezember-Abrechnung steht zum Download bereit</p>
-                                <span class="notification-time">vor 2 Stunden</span>
+                                <h4 data-de="Gehaltsabrechnung verfügbar">Payslip available</h4>
+                                <p data-de="Deine Dezember-Abrechnung steht zum Download bereit">Your December payslip is ready for download</p>
+                                <span class="notification-time" data-de="vor 2 Stunden">2 hours ago</span>
                             </div>
                         </div>
 
                         <div class="notification-item unread">
                             <div class="notification-icon">🎉</div>
                             <div class="notification-content">
-                                <h4>Neues Event: Bowling Night</h4>
-                                <p>Melde dich jetzt für die Bowling Night am 10.01. an</p>
-                                <span class="notification-time">vor 5 Stunden</span>
+                                <h4 data-de="Neues Event: Bowling Night">New Event: Bowling Night</h4>
+                                <p data-de="Melde dich jetzt für die Bowling Night am 10.01. an">Register now for the Bowling Night on Jan 10</p>
+                                <span class="notification-time" data-de="vor 5 Stunden">5 hours ago</span>
                             </div>
                         </div>
 
                         <div class="notification-item">
                             <div class="notification-icon">✅</div>
                             <div class="notification-content">
-                                <h4>Urlaubsantrag genehmigt</h4>
-                                <p>Dein Urlaubsantrag für 27.-31.12. wurde genehmigt</p>
-                                <span class="notification-time">gestern</span>
+                                <h4 data-de="Urlaubsantrag genehmigt">Vacation request approved</h4>
+                                <p data-de="Dein Urlaubsantrag für 27.-31.12. wurde genehmigt">Your vacation request for Dec 27-31 has been approved</p>
+                                <span class="notification-time" data-de="gestern">yesterday</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="notification-settings">
-                        <h3 class="section-title">Push-Benachrichtigungen</h3>
+                        <h3 class="section-title" data-de="Push-Benachrichtigungen">Push Notifications</h3>
                         <div class="settings-list">
                             <div class="setting-item">
                                 <div class="setting-info">
-                                    <h4>HR-News & Updates</h4>
-                                    <p>Wichtige Mitteilungen vom HR-Team</p>
+                                    <h4 data-de="HR-News & Updates">HR News & Updates</h4>
+                                    <p data-de="Wichtige Mitteilungen vom HR-Team">Important messages from the HR team</p>
                                 </div>
                                 <label class="toggle">
                                     <input type="checkbox" checked>
@@ -899,8 +902,8 @@
                             </div>
                             <div class="setting-item">
                                 <div class="setting-info">
-                                    <h4>Aufgaben-Erinnerungen</h4>
-                                    <p>Benachrichtigungen bei nahenden Deadlines</p>
+                                    <h4 data-de="Aufgaben-Erinnerungen">Task Reminders</h4>
+                                    <p data-de="Benachrichtigungen bei nahenden Deadlines">Notifications for approaching deadlines</p>
                                 </div>
                                 <label class="toggle">
                                     <input type="checkbox" checked>
@@ -909,8 +912,8 @@
                             </div>
                             <div class="setting-item">
                                 <div class="setting-info">
-                                    <h4>Social Events</h4>
-                                    <p>Neue Events und After-Work Aktivitäten</p>
+                                    <h4 data-de="Social Events">Social Events</h4>
+                                    <p data-de="Neue Events und After-Work Aktivitäten">New events and after-work activities</p>
                                 </div>
                                 <label class="toggle">
                                     <input type="checkbox" checked>
@@ -922,146 +925,145 @@
                 </div>
             </section>
 
-            <!-- Analytics & Insights Dashboard Section -->
             <section class="content-section" id="analytics">
                 <div class="content">
-                    <h2>Analytics & Insights Dashboard</h2>
-                    <p>Datengestützte Einblicke in deine Nutzung und persönliche Entwicklung</p>
+                    <h2 data-de="Analytics & Insights Dashboard">Analytics & Insights Dashboard</h2>
+                    <p data-de="Datengestützte Einblicke in deine Nutzung und persönliche Entwicklung">Data-driven insights into your usage and personal development</p>
 
                     <div class="analytics-overview">
                         <div class="analytics-card">
                             <div class="analytics-icon">📊</div>
                             <div class="analytics-value">87%</div>
-                            <div class="analytics-label">App-Engagement Score</div>
-                            <div class="trend positive">+12% vs. letzter Monat</div>
+                            <div class="analytics-label" data-de="App-Engagement Score">App Engagement Score</div>
+                            <div class="trend positive" data-de="+12% vs. letzter Monat">+12% vs. last month</div>
                         </div>
                         <div class="analytics-card">
                             <div class="analytics-icon">🎯</div>
                             <div class="analytics-value">23</div>
-                            <div class="analytics-label">Abgeschlossene Trainings</div>
-                            <div class="trend positive">+5 diesen Monat</div>
+                            <div class="analytics-label" data-de="Abgeschlossene Trainings">Completed Trainings</div>
+                            <div class="trend positive" data-de="+5 diesen Monat">+5 this month</div>
                         </div>
                         <div class="analytics-card">
                             <div class="analytics-icon">🤝</div>
                             <div class="analytics-value">15</div>
-                            <div class="analytics-label">Social-Interaktionen</div>
-                            <div class="trend positive">+3 diese Woche</div>
+                            <div class="analytics-label" data-de="Social-Interaktionen">Social Interactions</div>
+                            <div class="trend positive" data-de="+3 diese Woche">+3 this week</div>
                         </div>
                         <div class="analytics-card">
                             <div class="analytics-icon">💰</div>
                             <div class="analytics-value">67%</div>
-                            <div class="analytics-label">Benefits-Nutzung</div>
-                            <div class="trend neutral">33% Potenzial verfügbar</div>
+                            <div class="analytics-label" data-de="Benefits-Nutzung">Benefits Usage</div>
+                            <div class="trend neutral" data-de="33% Potenzial verfügbar">33% Potential available</div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Deine persönlichen Nutzungstrends</h3>
+                    <h3 class="section-title" data-de="Deine persönlichen Nutzungstrends">Your personal usage trends</h3>
                     <div class="usage-stats">
                         <div class="stat-card-analytics">
-                            <h4>Meist genutzte Features</h4>
+                            <h4 data-de="Meist genutzte Features">Most used features</h4>
                             <div class="feature-list">
                                 <div class="feature-stat">
-                                    <span class="feature-name">📰 News & Events</span>
+                                    <span class="feature-name" data-de="📰 News & Events">📰 News & Events</span>
                                     <div class="usage-bar">
                                         <div class="bar" style="width: 85%"></div>
                                     </div>
-                                    <span class="usage-count">42 Besuche</span>
+                                    <span class="usage-count" data-de="42 Besuche">42 visits</span>
                                 </div>
                                 <div class="feature-stat">
-                                    <span class="feature-name">💰 Gehaltsübersicht</span>
+                                    <span class="feature-name" data-de="💰 Gehaltsübersicht">💰 Salary Overview</span>
                                     <div class="usage-bar">
                                         <div class="bar" style="width: 70%"></div>
                                     </div>
-                                    <span class="usage-count">35 Besuche</span>
+                                    <span class="usage-count" data-de="35 Besuche">35 visits</span>
                                 </div>
                                 <div class="feature-stat">
-                                    <span class="feature-name">🏖️ Urlaubsplaner</span>
+                                    <span class="feature-name" data-de="🏖️ Urlaubsplaner">🏖️ Vacation Planner</span>
                                     <div class="usage-bar">
                                         <div class="bar" style="width: 60%"></div>
                                     </div>
-                                    <span class="usage-count">28 Besuche</span>
+                                    <span class="usage-count" data-de="28 Besuche">28 visits</span>
                                 </div>
                                 <div class="feature-stat">
-                                    <span class="feature-name">🤝 Social Hub</span>
+                                    <span class="feature-name" data-de="🤝 Social Hub">🤝 Social Hub</span>
                                     <div class="usage-bar">
                                         <div class="bar" style="width: 45%"></div>
                                     </div>
-                                    <span class="usage-count">18 Besuche</span>
+                                    <span class="usage-count" data-de="18 Besuche">18 visits</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="stat-card-analytics">
-                            <h4>Arbeitszeit-Übersicht (letzter Monat)</h4>
+                            <h4 data-de="Arbeitszeit-Übersicht (letzter Monat)">Working hours overview (last month)</h4>
                             <div class="time-stats-chart">
                                 <div class="chart-item">
-                                    <span class="chart-label">Durchschnitt/Tag</span>
-                                    <span class="chart-value">8:12 Std</span>
+                                    <span class="chart-label" data-de="Durchschnitt/Tag">Average/Day</span>
+                                    <span class="chart-value" data-de="8:12 Std">8:12 hrs</span>
                                 </div>
                                 <div class="chart-item">
-                                    <span class="chart-label">Gesamt-Arbeitszeit</span>
-                                    <span class="chart-value">164:30 Std</span>
+                                    <span class="chart-label" data-de="Gesamt-Arbeitszeit">Total Working Time</span>
+                                    <span class="chart-value" data-de="164:30 Std">164:30 hrs</span>
                                 </div>
                                 <div class="chart-item highlight">
-                                    <span class="chart-label">Überstunden</span>
-                                    <span class="chart-value">+12:30 Std</span>
+                                    <span class="chart-label" data-de="Überstunden">Overtime</span>
+                                    <span class="chart-value" data-de="+12:30 Std">+12:30 hrs</span>
                                 </div>
                                 <div class="chart-item">
-                                    <span class="chart-label">Krankheitstage</span>
-                                    <span class="chart-value">0 Tage</span>
+                                    <span class="chart-label" data-de="Krankheitstage">Sick Days</span>
+                                    <span class="chart-value" data-de="0 Tage">0 Days</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Training & Entwicklung</h3>
+                    <h3 class="section-title" data-de="Training & Entwicklung">Training & Development</h3>
                     <div class="training-analytics">
                         <div class="training-stat-card">
                             <div class="stat-header">
-                                <h4>Lernfortschritt</h4>
-                                <span class="stat-period">Letztes Quartal</span>
+                                <h4 data-de="Lernfortschritt">Learning Progress</h4>
+                                <span class="stat-period" data-de="Letztes Quartal">Last Quarter</span>
                             </div>
                             <div class="progress-circle">
                                 <div class="circle-value">65%</div>
                             </div>
                             <div class="stat-details">
                                 <div class="detail-row">
-                                    <span>Abgeschlossene Module:</span>
+                                    <span data-de="Abgeschlossene Module:">Completed Modules:</span>
                                     <span><strong>23/35</strong></span>
                                 </div>
                                 <div class="detail-row">
-                                    <span>Durchschn. Quiz-Score:</span>
+                                    <span data-de="Durchschn. Quiz-Score:">Avg. Quiz Score:</span>
                                     <span><strong>88%</strong></span>
                                 </div>
                                 <div class="detail-row">
-                                    <span>Lernzeit gesamt:</span>
-                                    <span><strong>18:30 Std</strong></span>
+                                    <span data-de="Lernzeit gesamt:">Total learning time:</span>
+                                    <span data-de="<strong>18:30 Std</strong>"><strong>18:30 hrs</strong></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="training-stat-card">
                             <div class="stat-header">
-                                <h4>Skill-Entwicklung</h4>
-                                <span class="stat-period">Aktueller Stand</span>
+                                <h4 data-de="Skill-Entwicklung">Skill Development</h4>
+                                <span class="stat-period" data-de="Aktueller Stand">Current Status</span>
                             </div>
                             <div class="skills-chart">
                                 <div class="skill-item">
-                                    <span class="skill-name">Produktwissen</span>
+                                    <span class="skill-name" data-de="Produktwissen">Product Knowledge</span>
                                     <div class="skill-bar">
                                         <div class="bar" style="width: 85%"></div>
                                     </div>
                                     <span class="skill-level">85%</span>
                                 </div>
                                 <div class="skill-item">
-                                    <span class="skill-name">Compliance</span>
+                                    <span class="skill-name" data-de="Compliance">Compliance</span>
                                     <div class="skill-bar">
                                         <div class="bar" style="width: 92%"></div>
                                     </div>
                                     <span class="skill-level">92%</span>
                                 </div>
                                 <div class="skill-item">
-                                    <span class="skill-name">IT-Systeme</span>
+                                    <span class="skill-name" data-de="IT-Systeme">IT Systems</span>
                                     <div class="skill-bar">
                                         <div class="bar" style="width: 78%"></div>
                                     </div>
@@ -1072,46 +1074,45 @@
                     </div>
 
                     <div class="hr-insights">
-                        <h3 class="section-title">Team-Insights (Anonymisiert)</h3>
-                        <p class="insights-note">📊 Diese Daten sind anonymisiert und dienen nur der allgemeinen Übersicht</p>
+                        <h3 class="section-title" data-de="Team-Insights (Anonymisiert)">Team Insights (Anonymized)</h3>
+                        <p class="insights-note" data-de="📊 Diese Daten sind anonymisiert und dienen nur der allgemeinen Übersicht">📊 These data are anonymized and serve only as a general overview</p>
                         <div class="insights-grid">
                             <div class="insight-card">
                                 <div class="insight-icon">👥</div>
                                 <div class="insight-value">92%</div>
-                                <div class="insight-label">Durchschn. App-Nutzung</div>
+                                <div class="insight-label" data-de="Durchschn. App-Nutzung">Avg. App Usage</div>
                             </div>
                             <div class="insight-card">
                                 <div class="insight-icon">🎓</div>
                                 <div class="insight-value">78%</div>
-                                <div class="insight-label">Training-Completion Rate</div>
+                                <div class="insight-label" data-de="Training-Completion Rate">Training Completion Rate</div>
                             </div>
                             <div class="insight-card">
                                 <div class="insight-icon">🎯</div>
                                 <div class="insight-value">65%</div>
-                                <div class="insight-label">Benefits-Awareness</div>
+                                <div class="insight-label" data-de="Benefits-Awareness">Benefits Awareness</div>
                             </div>
                             <div class="insight-card">
                                 <div class="insight-icon">🤝</div>
                                 <div class="insight-value">156</div>
-                                <div class="insight-label">Social Events/Jahr</div>
+                                <div class="insight-label" data-de="Social Events/Jahr">Social Events/Year</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Wellbeing & Mental Health Section -->
             <section class="content-section" id="wellbeing">
                 <div class="content">
-                    <h2>Wohlbefinden & Mentale Gesundheit</h2>
-                    <p>Deine Ressourcen für ein gesundes, ausgeglichenes Arbeitsleben</p>
+                    <h2 data-de="Wohlbefinden & Mentale Gesundheit">Wellbeing & Mental Health</h2>
+                    <p data-de="Deine Ressourcen für ein gesundes, ausgeglichenes Arbeitsleben">Your resources for a healthy, balanced working life</p>
 
                     <div class="wellbeing-intro">
                         <div class="info-card important">
                             <div class="info-icon">🔒</div>
                             <div class="info-content">
-                                <h4>Deine Privatsphäre ist geschützt</h4>
-                                <p>Alle deine Angaben werden vollständig anonymisiert und sicher gespeichert. Weder HR noch das Management können Rückschlüsse auf einzelne Personen ziehen.</p>
+                                <h4 data-de="Deine Privatsphäre ist geschützt">Your privacy is protected</h4>
+                                <p data-de="Alle deine Angaben werden vollständig anonymisiert und sicher gespeichert. Weder HR noch das Management können Rückschlüsse auf einzelne Personen ziehen.">All your data is completely anonymized and stored securely. Neither HR nor management can trace it back to individuals.</p>
                             </div>
                         </div>
                     </div>
@@ -1120,147 +1121,147 @@
                         <div class="wellbeing-card">
                             <div class="wellbeing-icon">😊</div>
                             <div class="wellbeing-status">
-                                <h4>Dein aktuelles Wohlbefinden</h4>
-                                <div class="mood-indicator good">Gut</div>
-                                <p class="last-check">Letzte Überprüfung: vor 3 Tagen</p>
+                                <h4 data-de="Dein aktuelles Wohlbefinden">Your current wellbeing</h4>
+                                <div class="mood-indicator good" data-de="Gut">Good</div>
+                                <p class="last-check" data-de="Letzte Überprüfung: vor 3 Tagen">Last check: 3 days ago</p>
                             </div>
-                            <button class="btn-secondary">Check-In starten</button>
+                            <button class="btn-secondary" data-de="Check-In starten">Start Check-In</button>
                         </div>
 
                         <div class="wellbeing-card">
                             <div class="wellbeing-icon">📈</div>
                             <div class="wellbeing-status">
-                                <h4>Stress-Level Trend</h4>
+                                <h4 data-de="Stress-Level Trend">Stress Level Trend</h4>
                                 <div class="stress-trend">
                                     <span class="trend-arrow down">↓</span>
-                                    <span class="trend-text">Rückläufig</span>
+                                    <span class="trend-text" data-de="Rückläufig">Declining</span>
                                 </div>
-                                <p class="trend-detail">15% niedriger als letzter Monat</p>
+                                <p class="trend-detail" data-de="15% niedriger als letzter Monat">15% lower than last month</p>
                             </div>
-                            <button class="btn-secondary">Details ansehen</button>
+                            <button class="btn-secondary" data-de="Details ansehen">View Details</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Self-Check Tools</h3>
+                    <h3 class="section-title" data-de="Self-Check Tools">Self-Check Tools</h3>
                     <div class="self-check-list">
                         <div class="check-card">
                             <div class="check-header">
                                 <div class="check-icon">🧘</div>
                                 <div class="check-info">
-                                    <h4>Stress-Level Check</h4>
-                                    <p>Schnelle Bewertung deines aktuellen Stresslevels</p>
+                                    <h4 data-de="Stress-Level Check">Stress Level Check</h4>
+                                    <p data-de="Schnelle Bewertung deines aktuellen Stresslevels">Quick assessment of your current stress level</p>
                                 </div>
                             </div>
                             <div class="check-meta">
-                                <span>⏱️ 5 Min</span>
-                                <span>📊 10 Fragen</span>
+                                <span data-de="⏱️ 5 Min">⏱️ 5 Min</span>
+                                <span data-de="📊 10 Fragen">📊 10 Questions</span>
                             </div>
-                            <button class="btn-primary">Check starten</button>
+                            <button class="btn-primary" data-de="Check starten">Start Check</button>
                         </div>
 
                         <div class="check-card">
                             <div class="check-header">
                                 <div class="check-icon">💙</div>
                                 <div class="check-info">
-                                    <h4>PHQ-8 Stimmungs-Check</h4>
-                                    <p>Standardisierter Fragebogen zur Stimmungslage</p>
+                                    <h4 data-de="PHQ-8 Stimmungs-Check">PHQ-8 Mood Check</h4>
+                                    <p data-de="Standardisierter Fragebogen zur Stimmungslage">Standardized questionnaire on mood</p>
                                 </div>
                             </div>
                             <div class="check-meta">
-                                <span>⏱️ 10 Min</span>
-                                <span>📊 8 Fragen</span>
-                                <span class="confidential">🔒 Anonym</span>
+                                <span data-de="⏱️ 10 Min">⏱️ 10 Min</span>
+                                <span data-de="📊 8 Fragen">📊 8 Questions</span>
+                                <span class="confidential" data-de="🔒 Anonym">🔒 Anonymous</span>
                             </div>
-                            <button class="btn-primary">Check starten</button>
+                            <button class="btn-primary" data-de="Check starten">Start Check</button>
                         </div>
 
                         <div class="check-card">
                             <div class="check-header">
                                 <div class="check-icon">😌</div>
                                 <div class="check-info">
-                                    <h4>Burnout-Risiko Assessment</h4>
-                                    <p>Frühzeitige Erkennung von Überlastungs-Anzeichen</p>
+                                    <h4 data-de="Burnout-Risiko Assessment">Burnout Risk Assessment</h4>
+                                    <p data-de="Frühzeitige Erkennung von Überlastungs-Anzeichen">Early detection of signs of overload</p>
                                 </div>
                             </div>
                             <div class="check-meta">
-                                <span>⏱️ 15 Min</span>
-                                <span>📊 22 Fragen</span>
-                                <span class="confidential">🔒 Anonym</span>
+                                <span data-de="⏱️ 15 Min">⏱️ 15 Min</span>
+                                <span data-de="📊 22 Fragen">📊 22 Questions</span>
+                                <span class="confidential" data-de="🔒 Anonym">🔒 Anonymous</span>
                             </div>
-                            <button class="btn-primary">Check starten</button>
+                            <button class="btn-primary" data-de="Check starten">Start Check</button>
                         </div>
 
                         <div class="check-card">
                             <div class="check-header">
                                 <div class="check-icon">🌊</div>
                                 <div class="check-info">
-                                    <h4>Angst-Selbsteinschätzung</h4>
-                                    <p>Leibowitz Anxiety Scale - Angststörungen erkennen</p>
+                                    <h4 data-de="Angst-Selbsteinschätzung">Anxiety Self-Assessment</h4>
+                                    <p data-de="Leibowitz Anxiety Scale - Angststörungen erkennen">Leibowitz Anxiety Scale - Recognizing anxiety disorders</p>
                                 </div>
                             </div>
                             <div class="check-meta">
-                                <span>⏱️ 12 Min</span>
-                                <span>📊 24 Fragen</span>
-                                <span class="confidential">🔒 Anonym</span>
+                                <span data-de="⏱️ 12 Min">⏱️ 12 Min</span>
+                                <span data-de="📊 24 Fragen">📊 24 Questions</span>
+                                <span class="confidential" data-de="🔒 Anonym">🔒 Anonymous</span>
                             </div>
-                            <button class="btn-primary">Check starten</button>
+                            <button class="btn-primary" data-de="Check starten">Start Check</button>
                         </div>
                     </div>
 
-                    <h3 class="section-title">Ressourcen & Übungen</h3>
+                    <h3 class="section-title" data-de="Ressourcen & Übungen">Resources & Exercises</h3>
                     <div class="resources-grid">
                         <div class="resource-card">
                             <div class="resource-icon">🧘‍♀️</div>
-                            <h4>Stressbewältigung</h4>
-                            <p>Geführte Atemübungen und Entspannungstechniken</p>
+                            <h4 data-de="Stressbewältigung">Stress Management</h4>
+                            <p data-de="Geführte Atemübungen und Entspannungstechniken">Guided breathing exercises and relaxation techniques</p>
                             <div class="resource-items">
-                                <a href="#" class="resource-link">▶️ Atemmeditation (5 Min)</a>
-                                <a href="#" class="resource-link">▶️ Progressive Muskelentspannung (12 Min)</a>
-                                <a href="#" class="resource-link">📄 Stress-Tagebuch führen</a>
+                                <a href="#" class="resource-link" data-de="▶️ Atemmeditation (5 Min)">▶️ Breathing meditation (5 Min)</a>
+                                <a href="#" class="resource-link" data-de="▶️ Progressive Muskelentspannung (12 Min)">▶️ Progressive muscle relaxation (12 Min)</a>
+                                <a href="#" class="resource-link" data-de="📄 Stress-Tagebuch führen">📄 Keep a stress diary</a>
                             </div>
                         </div>
 
                         <div class="resource-card">
                             <div class="resource-icon">💪</div>
-                            <h4>Resilienz stärken</h4>
-                            <p>Übungen zur mentalen Widerstandsfähigkeit</p>
+                            <h4 data-de="Resilienz stärken">Strengthen Resilience</h4>
+                            <p data-de="Übungen zur mentalen Widerstandsfähigkeit">Exercises for mental resilience</p>
                             <div class="resource-items">
-                                <a href="#" class="resource-link">📚 Resilienz-Training (7 Tage)</a>
-                                <a href="#" class="resource-link">▶️ Achtsamkeitsübungen</a>
-                                <a href="#" class="resource-link">📄 Positive Psychologie-Tipps</a>
+                                <a href="#" class="resource-link" data-de="📚 Resilienz-Training (7 Tage)">📚 Resilience Training (7 days)</a>
+                                <a href="#" class="resource-link" data-de="▶️ Achtsamkeitsübungen">▶️ Mindfulness exercises</a>
+                                <a href="#" class="resource-link" data-de="📄 Positive Psychologie-Tipps">📄 Positive psychology tips</a>
                             </div>
                         </div>
 
                         <div class="resource-card">
                             <div class="resource-icon">😴</div>
-                            <h4>Schlaf & Erholung</h4>
-                            <p>Tipps für besseren Schlaf und Regeneration</p>
+                            <h4 data-de="Schlaf & Erholung">Sleep & Recovery</h4>
+                            <p data-de="Tipps für besseren Schlaf und Regeneration">Tips for better sleep and regeneration</p>
                             <div class="resource-items">
-                                <a href="#" class="resource-link">▶️ Einschlaf-Meditation (15 Min)</a>
-                                <a href="#" class="resource-link">📄 Schlafhygiene-Guide</a>
-                                <a href="#" class="resource-link">📊 Schlaf-Tracker</a>
+                                <a href="#" class="resource-link" data-de="▶️ Einschlaf-Meditation (15 Min)">▶️ Sleep meditation (15 Min)</a>
+                                <a href="#" class="resource-link" data-de="📄 Schlafhygiene-Guide">📄 Sleep hygiene guide</a>
+                                <a href="#" class="resource-link" data-de="📊 Schlaf-Tracker">📊 Sleep tracker</a>
                             </div>
                         </div>
 
                         <div class="resource-card">
                             <div class="resource-icon">🗣️</div>
-                            <h4>Professionelle Unterstützung</h4>
-                            <p>Betriebliche Beratungsangebote</p>
+                            <h4 data-de="Professionelle Unterstützung">Professional Support</h4>
+                            <p data-de="Betriebliche Beratungsangebote">Corporate counseling offers</p>
                             <div class="resource-items">
-                                <a href="#" class="resource-link">📞 Vertrauliche Hotline (24/7)</a>
-                                <a href="#" class="resource-link">👥 Psychologische Beratung</a>
-                                <a href="#" class="resource-link">💼 Coaching-Angebote</a>
+                                <a href="#" class="resource-link" data-de="📞 Vertrauliche Hotline (24/7)">📞 Confidential Hotline (24/7)</a>
+                                <a href="#" class="resource-link" data-de="👥 Psychologische Beratung">👥 Psychological counseling</a>
+                                <a href="#" class="resource-link" data-de="💼 Coaching-Angebote">💼 Coaching offers</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="wellbeing-tips">
-                        <h3 class="section-title">Tägliche Wellbeing-Tipps</h3>
+                        <h3 class="section-title" data-de="Tägliche Wellbeing-Tipps">Daily Wellbeing Tips</h3>
                         <div class="tips-carousel">
                             <div class="tip-card active">
                                 <div class="tip-icon">💡</div>
-                                <h4>Mikropausen einlegen</h4>
-                                <p>Gönn dir alle 60-90 Minuten eine kurze 5-Minuten-Pause. Steh auf, bewege dich, atme tief durch. Dein Gehirn wird es dir danken!</p>
+                                <h4 data-de="Mikropausen einlegen">Take micro-breaks</h4>
+                                <p data-de="Gönn dir alle 60-90 Minuten eine kurze 5-Minuten-Pause. Steh auf, bewege dich, atme tief durch. Dein Gehirn wird es dir danken!">Treat yourself to a short 5-minute break every 60-90 minutes. Stand up, move around, take a deep breath. Your brain will thank you!</p>
                             </div>
                         </div>
                         <div class="carousel-dots">
@@ -1274,68 +1275,65 @@
                         <div class="emergency-card">
                             <div class="emergency-icon">🆘</div>
                             <div class="emergency-info">
-                                <h4>In einer Krise?</h4>
-                                <p>Wenn du dich in einer akuten Krise befindest, zögere nicht, professionelle Hilfe in Anspruch zu nehmen.</p>
+                                <h4 data-de="In einer Krise?">In a crisis?</h4>
+                                <p data-de="Wenn du dich in einer akuten Krise befindest, zögere nicht, professionelle Hilfe in Anspruch zu nehmen.">If you are in an acute crisis, do not hesitate to seek professional help.</p>
                             </div>
                             <div class="emergency-contacts">
-                                <a href="tel:08001110111" class="emergency-button">📞 Telefonseelsorge: 0800 111 0 111</a>
-                                <a href="#" class="emergency-button">🏥 Notdienst-Übersicht</a>
+                                <a href="tel:08001110111" class="emergency-button" data-de="📞 Telefonseelsorge: 0800 111 0 111">📞 Telephone Counseling: 0800 111 0 111</a>
+                                <a href="#" class="emergency-button" data-de="🏥 Notdienst-Übersicht">🏥 Emergency Services Overview</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Install Prompt -->
             <section class="install-prompt" id="installPrompt" style="display: none;">
                 <div class="install-card">
-                    <h3>MyARTIVION installieren</h3>
-                    <p>Installiere die MyARTIVION App auf deinem Gerät für schnelleren Zugriff!</p>
-                    <button id="installButton" class="btn-primary">Installieren</button>
-                    <button id="dismissButton" class="btn-secondary">Später</button>
+                    <h3 data-de="MyARTIVION installieren">Install MyARTIVION</h3>
+                    <p data-de="Installiere die MyARTIVION App auf deinem Gerät für schnelleren Zugriff!">Install the MyARTIVION App on your device for faster access!</p>
+                    <button id="installButton" class="btn-primary" data-de="Installieren">Install</button>
+                    <button id="dismissButton" class="btn-secondary" data-de="Später">Later</button>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2025 MyARTIVION. Powered by Artivion, Inc. Alle Rechte vorbehalten.</p>
+            <p data-de="&copy; 2025 MyARTIVION. Powered by Artivion, Inc. Alle Rechte vorbehalten.">&copy; 2025 MyARTIVION. Powered by Artivion, Inc. All rights reserved.</p>
         </footer>
 
-        <!-- Mobile Bottom Navigation -->
         <nav class="mobile-nav" id="mobileNav">
             <div class="mobile-nav-items">
                 <div class="mobile-nav-item active" data-section="home">
                     <span class="mobile-nav-icon">🏠</span>
-                    <span class="mobile-nav-label">Home</span>
+                    <span class="mobile-nav-label" data-de="Home">Home</span>
                 </div>
                 <div class="mobile-nav-item" data-section="benefits">
                     <span class="mobile-nav-icon">🎁</span>
-                    <span class="mobile-nav-label">Benefits</span>
+                    <span class="mobile-nav-label" data-de="Benefits">Benefits</span>
                 </div>
                 <div class="mobile-nav-item" data-section="news">
                     <span class="mobile-nav-icon">📰</span>
-                    <span class="mobile-nav-label">News</span>
+                    <span class="mobile-nav-label" data-de="News">News</span>
                 </div>
                 <div class="mobile-nav-item" data-section="tasks">
                     <span class="mobile-nav-icon">✅</span>
-                    <span class="mobile-nav-label">Aufgaben</span>
+                    <span class="mobile-nav-label" data-de="Aufgaben">Tasks</span>
                 </div>
                 <div class="mobile-nav-item" data-section="wellbeing">
                     <span class="mobile-nav-icon">💚</span>
-                    <span class="mobile-nav-label">Mehr</span>
+                    <span class="mobile-nav-label" data-de="Mehr">More</span>
                 </div>
             </div>
         </nav>
     </div>
 
-    <!-- AI Chatbot Widget -->
     <div class="chatbot-widget" id="chatbotWidget">
         <div class="chatbot-header" id="chatbotHeader">
             <div class="chatbot-header-content">
                 <div class="chatbot-icon">🤖</div>
                 <div class="chatbot-title">
                     <h3>MyARTIVION Assistant</h3>
-                    <p class="chatbot-subtitle">AI-gestützter FAQ-Bot</p>
+                    <p class="chatbot-subtitle" data-de="AI-gestützter FAQ-Bot">AI-powered FAQ Bot</p>
                 </div>
             </div>
             <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle chatbot">
@@ -1347,7 +1345,7 @@
             <div class="chatbot-messages" id="chatbotMessages">
                 <div class="chatbot-welcome">
                     <div class="welcome-icon">👋</div>
-                    <p>Hallo! Ich bin dein MyARTIVION Assistant. Ich kann dir Fragen zu Unternehmensrichtlinien, Benefits, Events und mehr beantworten.</p>
+                    <p data-de="Hallo! Ich bin dein MyARTIVION Assistant. Ich kann dir Fragen zu Unternehmensrichtlinien, Benefits, Events und mehr beantworten.">Hello! I am your MyARTIVION Assistant. I can answer questions about company policies, benefits, events, and more.</p>
                 </div>
             </div>
 
@@ -1356,7 +1354,8 @@
                     type="text"
                     class="chatbot-input"
                     id="chatbotInput"
-                    placeholder="Stelle eine Frage..."
+                    placeholder="Ask a question..."
+                    data-de="Stelle eine Frage..."
                     disabled
                     readonly
                 />
@@ -1367,20 +1366,51 @@
 
             <div class="chatbot-footer-note">
                 <span class="lock-icon">🔒</span>
-                <span>Lokal gehostet • Deine Daten bleiben bei Artivion</span>
+                <span data-de="Lokal gehostet • Deine Daten bleiben bei Artivion">Locally hosted • Your data stays with Artivion</span>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langBtn = document.getElementById('langToggleBtn');
+            let currentLang = 'en'; // Default language as requested
+
+            langBtn.addEventListener('click', () => {
+                // Toggle state
+                currentLang = currentLang === 'en' ? 'de' : 'en';
+                document.documentElement.lang = currentLang;
+                langBtn.textContent = currentLang === 'en' ? 'DE' : 'EN';
+
+                // Find all elements with a translation target
+                document.querySelectorAll('[data-de]').forEach(el => {
+                    const isInput = el.tagName === 'INPUT' && el.hasAttribute('placeholder');
+                    
+                    // Save the English default text dynamically upon first toggle
+                    if (!el.hasAttribute('data-en')) {
+                        el.setAttribute('data-en', isInput ? el.placeholder : el.innerHTML);
+                    }
+
+                    // Apply the new language text
+                    const newText = el.getAttribute(`data-${currentLang}`);
+                    if (isInput) {
+                        el.placeholder = newText;
+                    } else {
+                        el.innerHTML = newText;
+                    }
+                });
+            });
+        });
+    </script>
+
     <script src="/js/auth.js"></script>
     <script>
         // Check authentication before loading app
-        Auth.requireAuth();
+        if(typeof Auth !== 'undefined') Auth.requireAuth();
 
         // Initialize auth UI when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            Auth.initAuthUI();
+            if(typeof Auth !== 'undefined') Auth.initAuthUI();
         });
     </script>
     <script src="/js/app.js"></script>
